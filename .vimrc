@@ -55,8 +55,9 @@ set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 
 " trim whitespace automatically
-"autocmd BufWritePre * :%s/\s\+$//e
-
+if $HOME == '/home/cuongtn'
+    autocmd BufWritePre * :%s/\s\+$//e
+endif
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
