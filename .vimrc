@@ -16,7 +16,7 @@ call vundle#begin()
 " ----------------------------------------------------------------- "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" list plugins installed with Vundle
+" list of Github plugins Vundle
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
@@ -24,6 +24,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
 Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
+Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
+Bundle 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,9 +57,8 @@ set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 
 " trim whitespace automatically
-if $HOME == '/home/cuongtn'
-    autocmd BufWritePre * :%s/\s\+$//e
-endif
+"autocmd BufWritePre * :%s/\s\+$//e
+
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
@@ -118,6 +119,12 @@ autocmd FileType html,css EmmetInstall
 " Plugin: Vim-JSX                                                   "
 " ----------------------------------------------------------------- "
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" ----------------------------------------------------------------- "
+" Plugin: TagBar                                                    "
+" ----------------------------------------------------------------- "
+let g:tagbar_width=26                          " Default is 40, seems too wide
+nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup                                              "
