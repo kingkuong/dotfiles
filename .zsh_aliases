@@ -1,8 +1,8 @@
 # -------------------------------------------------------------------
 # General aliases
 # -------------------------------------------------------------------
-alias cms="cd ~/Dropbox/journal/ && jekyll serve --watch"
-#alias update='sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove && sudo apt-get autoclean'
+alias cms="cd /home/cuongtn/work/journal/ && jekyll serve --watch"
+alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias install='sudo apt-get update && sudo apt-get install -y'
 
 # -------------------------------------------------------------------
@@ -43,6 +43,14 @@ dropbox_fix() {
     dropbox start
 }
 
+run() {
+    number=$1
+    shift
+    for i in `seq $number`; do
+    $@
+    done
+}
+
 # Alias kill port
 killport()
 {
@@ -59,7 +67,8 @@ mapport()
 alias xquit='xscreensaver-command -activate'
 
 # Logit
-alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python manage.py runserver 0.0.0.0:8080'
-alias logit1='cd ~/work/rightblue/logit1/git/LogItShared && activate && python manage.py runserver 0.0.0.0:8081'
-alias logit2='cd ~/work/rightblue/logit2/git/LogItShared && activate && python manage.py runserver 0.0.0.0:8082'
-alias logit3='cd ~/work/rightblue/logit3/git/LogItShared && activate && python manage.py runserver 0.0.0.0:8083'
+alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8080'
+alias logit1='cd ~/work/rightblue/logit1/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8081'
+alias logit2='cd ~/work/rightblue/logit2/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8082'
+alias logit3='cd ~/work/rightblue/logit3/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8083'
+alias shellp='python3 manage.py shell_plus'
