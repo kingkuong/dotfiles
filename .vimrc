@@ -25,7 +25,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
-Bundle 'majutsushi/tagbar'
+Bundle 'majutsushi/tagbar' "class outliner - Shortcut: F6
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
