@@ -25,6 +25,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
+Plugin 'klen/python-mode' "Python syntax highlighting
 Bundle 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
@@ -126,6 +127,12 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " ----------------------------------------------------------------- "
 "let g:tagbar_width=26                          " Default is 40, seems too wide
 nmap <F6> :TagbarToggle<CR>
+
+" ----------------------------------------------------------------- "
+" Plugin: Python Mode                                               "
+" ----------------------------------------------------------------- "
+let g:pymode_indent=1 " enable/disable pep8 identation
+let g:pymode_options_colorcolumn=1 " enable/disable color for max line length
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup                                              "
