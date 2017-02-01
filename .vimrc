@@ -25,7 +25,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
-Bundle 'majutsushi/tagbar' "class outliner - Shortcut: F6
+Bundle 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,6 +70,7 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spa
 " Shortcuts                                                         "
 " ----------------------------------------------------------------- "
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+nnoremap <F2> :set invnumber &<CR>
 
 " open HTML in Chrome
 nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
@@ -123,7 +124,7 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " ----------------------------------------------------------------- "
 " Plugin: TagBar                                                    "
 " ----------------------------------------------------------------- "
-let g:tagbar_width=26                          " Default is 40, seems too wide
+"let g:tagbar_width=26                          " Default is 40, seems too wide
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
@@ -132,3 +133,4 @@ nmap <F6> :TagbarToggle<CR>
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
+ab pdb import pdb; pdb.set_trace()
