@@ -67,8 +67,8 @@ mapport()
 alias xquit='xscreensaver-command -activate'
 
 # Logit
-alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8080'
-alias logit1='cd ~/work/rightblue/logit1/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8081'
-alias logit2='cd ~/work/rightblue/logit2/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8082'
-alias logit3='cd ~/work/rightblue/logit3/git/LogItShared && activate && python3 manage.py runserver 0.0.0.0:8083'
+alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8080'
+alias logit1='cd ~/work/rightblue/logit1/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8081'
+alias logit2='cd ~/work/rightblue/logit2/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8082'
+alias logit3='cd ~/work/rightblue/logit3/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8083'
 alias shellp='python3 manage.py shell_plus'
