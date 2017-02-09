@@ -71,7 +71,7 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spa
 " Shortcuts                                                         "
 " ----------------------------------------------------------------- "
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-nnoremap <F2> :set invnumber &<CR>
+nnoremap <F2> :set invnumber <CR>
 
 " open HTML in Chrome
 nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
@@ -129,15 +129,10 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
-" Plugin: Python Mode                                               "
-" ----------------------------------------------------------------- "
-let g:pymode_indent=1 " enable/disable pep8 identation
-let g:pymode_options_colorcolumn=1 " enable/disable color for max line length
-
-" ----------------------------------------------------------------- "
 " Python/ Django setup                                              "
 " ----------------------------------------------------------------- "
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
 ab pdb import pdb; pdb.set_trace()
+ab ipdb import ipdb; ipdb.set_trace()
