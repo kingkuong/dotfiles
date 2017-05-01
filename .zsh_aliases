@@ -21,6 +21,8 @@ alias gs="git status"
 alias gd="git diff"
 alias gc="git commit"
 alias gcl="git clone"
+
+# More colorful/ informative git log
 alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
@@ -72,7 +74,7 @@ kill_port()
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
-# map PortA to PortB using iptables
+# Map PortA to PortB using iptables
 # Usage: map_port portA(int) portB(int)
 map_port()
 {
