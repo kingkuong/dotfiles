@@ -79,6 +79,7 @@ map_port()
     sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport "$1" -j REDIRECT --to-port "$2"
 }
 
-# Logit
-alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8080'
-alias shellp='python3 manage.py shell_plus'
+# More aliases files
+if [ -f ~/.zsh_aliases.logit ]; then
+    source ~/.zsh_aliases.logit
+fi

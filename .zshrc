@@ -87,8 +87,11 @@ export LANG=en_US.UTF-8
 bindkey -v
 bindkey -M viins ‘jk’ vi-cmd-mode #bindkey jk to enter vim
 
+# Include aliases files
 if [ -f ~/.zsh_aliases ]; then
-    . ~/.zsh_aliases
+    source ~/.zsh_aliases
+else
+    print "404: zsh_aliases not found"
 fi
 
 # want your terminal to support 256 color schemes? I do ...
@@ -101,7 +104,7 @@ eval $(thefuck --alias)
 
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 
-export NVM_DIR="/home/cuongtn/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
@@ -117,3 +120,6 @@ export PATH=$PATH:~/.local/bin
 # GO
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
+
+# REACT NATIVE
+export REACT_EDITOR=subl
