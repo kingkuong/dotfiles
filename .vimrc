@@ -1,5 +1,5 @@
 " ----------------------------------------------------------------- "
-" Vundle config                                                     "
+" Vundle config
 " ----------------------------------------------------------------- "
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -12,7 +12,7 @@ call vundle#begin()
 
 
 " ----------------------------------------------------------------- "
-" Plugins                                                           "
+" Plugins installed with Vundle
 " ----------------------------------------------------------------- "
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -26,6 +26,7 @@ Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'klen/python-mode' "Python syntax highlighting
+
 Bundle 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
@@ -43,10 +44,19 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" ----------------------------------------------------------------- "
+" Plugins installed with Plug
+" ----------------------------------------------------------------- "
 
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+" Initialize plugin system
+call plug#end()
+
 " map escape to jk
 inoremap jk <ESC>
 
@@ -58,8 +68,10 @@ set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 
 " trim whitespace automatically
-"autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 
+" set localleader
+let maplocalleader = "-"
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
@@ -71,7 +83,7 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spa
 " Shortcuts                                                         "
 " ----------------------------------------------------------------- "
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-nnoremap <F2> :set invnumber <CR>
+nnoremap <F2> :set invnumber &<CR>
 
 " open HTML in Chrome
 nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
@@ -110,7 +122,7 @@ call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 
 " ----------------------------------------------------------------- "
-" Plugin: Emmet                                                     "
+" Plugin: Emmet
 " ----------------------------------------------------------------- "
 " enable emmet only for html, css
 
@@ -118,21 +130,37 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
 " ----------------------------------------------------------------- "
-" Plugin: Vim-JSX                                                   "
+" Plugin: Vim-JSX
 " ----------------------------------------------------------------- "
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " ----------------------------------------------------------------- "
-" Plugin: TagBar                                                    "
+" Plugin: TagBar
 " ----------------------------------------------------------------- "
 "let g:tagbar_width=26                          " Default is 40, seems too wide
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
-" Python/ Django setup                                              "
+" Plugin: Python Mode
+" ----------------------------------------------------------------- "
+let g:pymode_indent=1 " enable/disable pep8 identation
+let g:pymode_options_colorcolumn=1 " enable/disable color for max line length
+
+" ----------------------------------------------------------------- "
+" Python/ Django setup
 " ----------------------------------------------------------------- "
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
 ab pdb import pdb; pdb.set_trace()
 ab ipdb import ipdb; ipdb.set_trace()
+
+" ----------------------------------------------------------------- "
+" MarkDown
+" ----------------------------------------------------------------- "
+autocmd FileType mkd set spell
+
+" ----------------------------------------------------------------- "
+" Pathogen
+" ----------------------------------------------------------------- "
+execute pathogen#infect()
