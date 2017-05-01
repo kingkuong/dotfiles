@@ -68,7 +68,7 @@ set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 
 " trim whitespace automatically
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " set localleader
 let maplocalleader = "-"
@@ -76,8 +76,7 @@ let maplocalleader = "-"
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
 " ----------------------------------------------------------------- "
-"au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
-
+au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
 
 " ----------------------------------------------------------------- "
 " Shortcuts                                                         "
@@ -89,7 +88,6 @@ nnoremap <F2> :set invnumber &<CR>
 nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
 " open HTML in Firefox
 nnoremap <F5> :silent update<Bar>silent !firefox %:p &<CR>
-
 
 " ----------------------------------------------------------------- "
 " Colors                                                            "
@@ -125,7 +123,6 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 " Plugin: Emmet
 " ----------------------------------------------------------------- "
 " enable emmet only for html, css
-
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
