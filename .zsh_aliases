@@ -1,22 +1,28 @@
 # -------------------------------------------------------------------
 # General aliases
 # -------------------------------------------------------------------
-alias cms="cd /home/cuongtn/work/journal/ && jekyll serve --watch"
 alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias install='sudo apt-get update && sudo apt-get install -y'
+alias clean='sudo apt-get autoremove -y && sudo apt-get autoclean -y'
+
+# -------------------------------------------------------------------
+# VIM
+# -------------------------------------------------------------------
+alias v=vim
+alias gv=gvim
 
 # -------------------------------------------------------------------
 # Git aliases
 # -------------------------------------------------------------------
-alias glog="git log --oneline"
-alias gpush="git push -u origin master"
-alias gheroku="git push heroku master"
-alias gpull="git pull origin master"
-alias gg="git add . && git commit"
-alias gstatus="git status"
-alias gadd="git add"
+alias gl="git log --oneline --graph"
+alias gp="git push"
+alias ga="git add "
+alias gs="git status"
+alias gd="git diff"
 alias gc="git commit"
-alias gclone="git clone"
+alias gcl="git clone"
+alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
 # -------------------------------------------------------------------
 # Ruby/Rails aliases
@@ -26,24 +32,32 @@ alias be="bundle exec"
 # -------------------------------------------------------------------
 # Python/Django aliases
 # -------------------------------------------------------------------
-djrun() {
+# Running Django development server
+# Usage: dj port_number(int) 
+# TODO: accept default port of 8000
+dj() {
     python manage.py runserver 0.0.0.0:"$1"
 }
 
 alias activate='source env/bin/activate'
-alias p3='python3'
 
 # Alias vagrant
 alias vupp='vagrant up --provision'
 alias vrep='vagrant reload --provision'
 
+# -------------------------------------------------------------------
+# Python/Django aliases
+# -------------------------------------------------------------------
+# Fix dropbox icon hiding problem in XFCE
 dropbox_fix() {
     dropbox stop &&
     DBUS_SESSION_BUS_ADDRESS=''
     dropbox start
 }
 
-run() {
+# Running command in a loop
+# Usage: 'run_loops times(int) command'
+run_loops() {
     number=$1
     shift
     for i in `seq $number`; do
@@ -51,24 +65,20 @@ run() {
     done
 }
 
-# Alias kill port
-killport()
+# Kill certain port (with sudo)
+# Usage: kill_port no(int)
+kill_port()
 {
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
-# Alias map port using iptables
-mapport()
+# map PortA to PortB using iptables
+# Usage: map_port portA(int) portB(int)
+map_port()
 {
     sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport "$1" -j REDIRECT --to-port "$2"
 }
 
-# xScreensaver
-alias xquit='xscreensaver-command -activate'
-
 # Logit
 alias logit='cd ~/work/rightblue/logit/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8080'
-alias logit1='cd ~/work/rightblue/logit1/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8081'
-alias logit2='cd ~/work/rightblue/logit2/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8082'
-alias logit3='cd ~/work/rightblue/logit3/git/LogItShared && activate && python3 manage.py runserver_plus 0.0.0.0:8083'
 alias shellp='python3 manage.py shell_plus'
