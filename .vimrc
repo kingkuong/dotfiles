@@ -19,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 " list of Github plugins Vundle
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive' "git wrapper
 Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
 Plugin 'valloric/youcompleteme' "syntax completion
@@ -27,7 +27,7 @@ Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'klen/python-mode' "Python syntax highlighting
 
-Bundle 'majutsushi/tagbar'
+Bundle 'majutsushi/tagbar' 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -138,10 +138,15 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
-" Plugin: Python Mode
+" Plugin: python-mode 
 " ----------------------------------------------------------------- "
-let g:pymode_indent=1 " enable/disable pep8 identation
-let g:pymode_options_colorcolumn=1 " enable/disable color for max line length
+"let g:pymode_indent=1 " enable/disable pep8 identation
+let g:pymode_options_colorcolumn = 1 " enable/disable color for max line length
+let g:pymode_trim_whitespaces = 0
+let g:python_mode = 'python3'
+" Code checking options
+let g:pymode_lint_on_write = 0
+let g:pymode_lint_unmodified = 0 "disable code check on every save
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
@@ -153,6 +158,12 @@ ab pdb import pdb; pdb.set_trace()
 ab ipdb import ipdb; ipdb.set_trace()
 
 " ----------------------------------------------------------------- "
+" tag file TODO: more about this
+" ----------------------------------------------------------------- "
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" ----------------------------------------------------------------- "
 " MarkDown
 " ----------------------------------------------------------------- "
 autocmd FileType mkd set spell
@@ -161,3 +172,4 @@ autocmd FileType mkd set spell
 " Pathogen
 " ----------------------------------------------------------------- "
 execute pathogen#infect()
+syntax on
