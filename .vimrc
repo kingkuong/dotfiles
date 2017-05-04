@@ -162,7 +162,7 @@ autocmd FileType python set ts=4
 autocmd FileType python set sts=4
 ab pdb import pdb; pdb.set_trace()
 ab ipdb import ipdb; ipdb.set_trace()
-ab _main_ if __name__ == '__main__':
+ab _main if __name__ == '__main__':
 
 " ----------------------------------------------------------------- "
 " tag file TODO: more about this
