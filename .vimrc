@@ -27,7 +27,7 @@ Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'klen/python-mode' "Python syntax highlighting
 
-Bundle 'majutsushi/tagbar' 
+Bundle 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,37 +57,43 @@ call plug#begin('~/.vim/plugged')
 " Initialize plugin system
 call plug#end()
 
+set number " display number line
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
+" trim whitespace automatically
+autocmd BufWritePre * :%s/\s\+$//e
+
+" ----------------------------------------------------------------- "
+" Mapping                                                         "
+" ----------------------------------------------------------------- "
+" use %% to get current directory
+cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" hide/display column number
+nnoremap <F2> :set invnumber &<CR>
+" open HTML in Chrome
+nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
+" open HTML in Firefox
+nnoremap <F5> :silent update<Bar>silent !firefox %:p &<CR>
 " map escape to jk
 inoremap jk <ESC>
 
-" enable repeatation in visual mode
+"TODO: checkout unimpaired.vim
+"TODO: mapping :next, :prev with keys
+"nnoremap ]] :silent :next &<CR>
+"nnoremap [[ :silent :next &<CR>
+
+" enable repeating in visual mode
 vnoremap . :norm.<CR>
-
-" user setting
-set number " display number line
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
-
-" trim whitespace automatically
-"autocmd BufWritePre * :%s/\s\+$//e
 
 " set localleader
 let maplocalleader = "-"
+
+" save file as sudo user
+cmap w!! w !sudo tee % > /dev/null %
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
 " ----------------------------------------------------------------- "
 au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
-
-" ----------------------------------------------------------------- "
-" Shortcuts                                                         "
-" ----------------------------------------------------------------- "
-cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-nnoremap <F2> :set invnumber &<CR>
-
-" open HTML in Chrome
-nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
-" open HTML in Firefox
-nnoremap <F5> :silent update<Bar>silent !firefox %:p &<CR>
 
 " ----------------------------------------------------------------- "
 " Colors                                                            "
@@ -138,11 +144,11 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
-" Plugin: python-mode 
+" Plugin: python-mode
 " ----------------------------------------------------------------- "
 "let g:pymode_indent=1 " enable/disable pep8 identation
 let g:pymode_options_colorcolumn = 1 " enable/disable color for max line length
-let g:pymode_trim_whitespaces = 0
+let g:pymode_trim_whitespaces = 1
 let g:python_mode = 'python3'
 " Code checking options
 let g:pymode_lint_on_write = 0
