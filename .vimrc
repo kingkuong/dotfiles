@@ -180,3 +180,6 @@ autocmd FileType mkd set spell
 " ----------------------------------------------------------------- "
 execute pathogen#infect()
 syntax on
+" List of Pathogen installed Plugin:
+" - speeddating
+" - unimpaired
