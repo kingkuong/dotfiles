@@ -76,11 +76,6 @@ nnoremap <F5> :silent update<Bar>silent !firefox %:p &<CR>
 " map escape to jk
 inoremap jk <ESC>
 
-"TODO: checkout unimpaired.vim
-"TODO: mapping :next, :prev with keys
-"nnoremap ]] :silent :next &<CR>
-"nnoremap [[ :silent :next &<CR>
-
 " enable repeating in visual mode
 vnoremap . :norm.<CR>
 
