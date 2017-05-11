@@ -68,13 +68,17 @@ autocmd BufWritePre * :%s/\s\+$//e
 " use %% to get current directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " hide/display column number
-nnoremap <F2> :set invnumber &<CR>
+nnoremap <F2> :set invnumber <CR>
 " open HTML in Chrome
-nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p &<CR>
+nnoremap <F8> :silent update<Bar>silent !chromium-browser %:p <CR>
 " open HTML in Firefox
-nnoremap <F5> :silent update<Bar>silent !firefox %:p &<CR>
+nnoremap <F5> :silent update<Bar>silent !firefox %:p <CR>
 " map escape to jk
 inoremap jk <ESC>
+
+" set spelling checking
+nnoremap <F3> :set spell <CR>
+nnoremap <F4> :set nospell <CR>
 
 " enable repeating in visual mode
 vnoremap . :norm.<CR>

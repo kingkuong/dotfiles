@@ -18,8 +18,9 @@ alias gl="git log --oneline --graph"
 alias gp="git push"
 alias ga="git add "
 alias gs="git status"
-alias gd="git diff"
+alias gd="git diff -w"
 alias gc="git commit"
+alias gpl="git pull"
 alias gcl="git clone"
 
 # More colorful/ informative git log
@@ -35,7 +36,7 @@ alias be="bundle exec"
 # Python/Django aliases
 # -------------------------------------------------------------------
 # Running Django development server
-# Usage: dj port_number(int) 
+# Usage: dj port_number(int)
 # TODO: accept default port of 8000
 dj() {
     python manage.py runserver 0.0.0.0:"$1"
