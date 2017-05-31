@@ -10,7 +10,6 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
-
 " ----------------------------------------------------------------- "
 " Plugins installed with Vundle
 " ----------------------------------------------------------------- "
@@ -22,10 +21,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive' "git wrapper
 Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
-Plugin 'valloric/youcompleteme' "syntax completion
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'klen/python-mode' "Python syntax highlighting
+Plugin 'elixir-lang/vim-elixir'
 
 Bundle 'majutsushi/tagbar'
 
@@ -48,15 +47,17 @@ filetype plugin indent on    " required
 " Plugins installed with Plug
 " ----------------------------------------------------------------- "
 
-" ----------------------------------------------------------------- "
-" Vim config                                                        "
-" ----------------------------------------------------------------- "
+" Plug Config
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
 
 " Initialize plugin system
 call plug#end()
 
+
+" ----------------------------------------------------------------- "
+" Vim config                                                        "
+" ----------------------------------------------------------------- "
 set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 " trim whitespace automatically
@@ -147,7 +148,6 @@ nmap <F6> :TagbarToggle<CR>
 " ----------------------------------------------------------------- "
 "let g:pymode_indent=1 " enable/disable pep8 identation
 let g:pymode_options_colorcolumn = 1 " enable/disable color for max line length
-let g:pymode_trim_whitespaces = 1
 let g:python_mode = 'python3'
 " Code checking options
 let g:pymode_lint_on_write = 0
@@ -182,3 +182,15 @@ syntax on
 " List of Pathogen installed Plugin:
 " - speeddating
 " - unimpaired
+" - YouCompleteMe
+"   **Quick Guide**
+"       - cd ~/.vim/bundle
+"       - git clone https://github.com/Valloric/YouCompleteMe.git
+"       - git submodule update --init --recursive
+"       - Make sure these libraries are installed
+"           sudo apt-get install build-essential cmake
+"           sudo apt-get install python-dev python3-dev
+"           node/npm
+"       This will install YCM with syntax support for C-family language,
+"               Python and Javascript
+"       - ./install.py --clang-completer --tern-completer
