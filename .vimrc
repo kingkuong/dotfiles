@@ -54,7 +54,6 @@ call plug#begin('~/.vim/plugged')
 " Initialize plugin system
 call plug#end()
 
-
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
@@ -62,6 +61,7 @@ set number " display number line
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
 " trim whitespace automatically
 autocmd BufWritePre * :%s/\s\+$//e
+set path=$PWD/** " set path to current directory, for file searching
 
 " ----------------------------------------------------------------- "
 " Mapping                                                         "
