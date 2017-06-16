@@ -123,3 +123,10 @@ export PATH=$PATH:$GOROOT/bin
 
 # REACT NATIVE
 export REACT_EDITOR=subl
+
+# Include Logit ssh files
+if [ -f ~/.zshrc.logit ]; then
+    source ~/.zshrc.logit
+else
+    print "404: zsh_logit not found"
+fi
