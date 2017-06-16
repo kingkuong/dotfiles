@@ -57,12 +57,34 @@ call plug#end()
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
-set number " display number line
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab " make tabs as 4 spaces
-" trim whitespace automatically
-autocmd BufWritePre * :%s/\s\+$//e
-set path=$PWD/** " set path to current directory, for file searching
+set title               " change the terminal title
+set encoding=utf-8      " show utf8-chars
+set showcmd             " count highlighted
+set ruler               " show where I am in the command area
+set number              " display number line
+set showmode            " -- INSERT (appreciation)-- :)
+set mouse=a             " use the mouse
 
+set cursorline          " highlight current line
+set mousehide           " hide the mouse when typing
+set backspace=2         " backspace over indent, eol, and insert
+
+set hlsearch            " highlight my search
+set incsearch           " incremental search
+set wrapscan            " set the search can to wrap around the file
+
+set ignorecase          " when searching
+set smartcase           " ..unless I use an uppercase character
+
+set path=$PWD/**        " set path to current directory, for file searching
+
+set tabstop=8
+set softtabstop=0
+set expandtab
+set shiftwidth=4
+set smarttab
+
+autocmd BufWritePre * :%s/\s\+$//e      " trim whitespace automatically
 " ----------------------------------------------------------------- "
 " Mapping                                                         "
 " ----------------------------------------------------------------- "
@@ -89,6 +111,11 @@ let maplocalleader = "-"
 
 " save file as sudo user
 cmap w!! w !sudo tee % > /dev/null %
+
+" enable the Rpdf command to read PDF inside vim
+:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+
+syntax on
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
@@ -178,7 +205,6 @@ autocmd FileType mkd set spell
 " Pathogen
 " ----------------------------------------------------------------- "
 execute pathogen#infect()
-syntax on
 " List of Pathogen installed Plugin:
 " - speeddating
 " - unimpaired
