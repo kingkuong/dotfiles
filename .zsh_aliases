@@ -45,12 +45,22 @@ dj() {
 
 alias activate='source env/bin/activate'
 
+# -------------------------------------------------------------------
+# Vagrant aliases
+# -------------------------------------------------------------------
 # Alias vagrant
 alias vupp='vagrant up --provision'
 alias vrep='vagrant reload --provision'
 
 # -------------------------------------------------------------------
-# Python/Django aliases
+# Elixir/ Phoenix
+# -------------------------------------------------------------------
+# Alias vagrant
+alias mt='mix test --trace'
+alias mtt='mix test'
+
+# -------------------------------------------------------------------
+# Functional Commands
 # -------------------------------------------------------------------
 # Fix dropbox icon hiding problem in XFCE
 dropbox_fix() {
