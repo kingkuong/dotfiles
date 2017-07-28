@@ -112,6 +112,10 @@ let maplocalleader = "-"
 " save file as sudo user
 cmap w!! w !sudo tee % > /dev/null %
 
+cmap aa! argadd%
+cmap ad! argdelete%
+cmap ff! find
+
 " enable the Rpdf command to read PDF inside vim
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
@@ -135,22 +139,37 @@ colorscheme wombat256
 " ----------------------------------------------------------------- "
 " Plugin: NerdTree
 " ----------------------------------------------------------------- "
-map <C-n> :NERDTreeToggle<CR>
-
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 "Use 'I' to toggle hidden files"
-
 let g:NERDTreeShowHidden = 1
 
+" Toggle  NERDTree opening with working file's directory
+function! NERDTreeToggleInCurDir()
+    " If NERDTree is open in the current buffer
+    if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        exe ":NERDTreeClose"
+    else
+        "If there's current file
+        if (expand("%:t") != '')
+            exe ":NERDTreeFind"
+        else
+            exe ":NERDTreeToggle"
+        endif
+    endif
+endfunction
+
+" Function to highlight different extensions
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
-
 call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+
+" NERDTree Mapping
+map <C-n> :call NERDTreeToggleInCurDir()<CR>
 
 " ----------------------------------------------------------------- "
 " Plugin: Emmet
