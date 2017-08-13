@@ -24,7 +24,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'klen/python-mode' "Python syntax highlighting
-Plugin 'elixir-lang/vim-elixir'
+Plugin 'elixir-lang/vim-elixir' "Syntax highlighting for .eex, .exs, .ex
+Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
+Plugin 'Yggdroot/indentLine' "View indentation level
 
 Bundle 'majutsushi/tagbar'
 
@@ -83,6 +85,8 @@ set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
+
+setlocal foldmethod=syntax "folding by syntax highlighting
 
 autocmd BufWritePre * :%s/\s\+$//e      " trim whitespace automatically
 " ----------------------------------------------------------------- "
@@ -198,6 +202,16 @@ let g:python_mode = 'python3'
 " Code checking options
 let g:pymode_lint_on_write = 0
 let g:pymode_lint_unmodified = 0 "disable code check on every save
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-json
+" ----------------------------------------------------------------- "
+set conceallevel=2
+
+" ----------------------------------------------------------------- "
+" Plugin: indent-line
+" ----------------------------------------------------------------- "
+let g:indentLine_noConcealCursor=""
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
