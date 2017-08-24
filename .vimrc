@@ -138,7 +138,10 @@ au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
 set term=screen-256color
 
 " color scheme after installing vim-colorschemes
-colorscheme wombat256
+colorscheme badwolf
+
+" config badwolf
+let g:badwolf_darkgutter = 1
 
 " ----------------------------------------------------------------- "
 " Plugin: NerdTree
