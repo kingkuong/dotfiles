@@ -23,7 +23,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
-Plugin 'klen/python-mode' "Python syntax highlighting
 Plugin 'elixir-lang/vim-elixir' "Syntax highlighting for .eex, .exs, .ex
 Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
 Plugin 'Yggdroot/indentLine' "View indentation level
@@ -197,16 +196,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 " ----------------------------------------------------------------- "
 "let g:tagbar_width=26                          " Default is 40, seems too wide
 nmap <F6> :TagbarToggle<CR>
-
-" ----------------------------------------------------------------- "
-" Plugin: python-mode
-" ----------------------------------------------------------------- "
-"let g:pymode_indent=1 " enable/disable pep8 identation
-let g:pymode_options_colorcolumn = 1 " enable/disable color for max line length
-let g:python_mode = 'python3'
-" Code checking options
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_unmodified = 0 "disable code check on every save
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-json
