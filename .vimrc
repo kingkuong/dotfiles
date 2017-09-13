@@ -26,6 +26,7 @@ Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'elixir-lang/vim-elixir' "Syntax highlighting for .eex, .exs, .ex
 Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
 Plugin 'Yggdroot/indentLine' "View indentation level
+Plugin 'mileszs/ack.vim' "Ack searcher
 
 Bundle 'majutsushi/tagbar'
 
@@ -206,6 +207,14 @@ set conceallevel=2
 " Plugin: indent-line
 " ----------------------------------------------------------------- "
 let g:indentLine_noConcealCursor=""
+
+" ----------------------------------------------------------------- "
+" Plugin: ack.vim
+" ----------------------------------------------------------------- "
+" To use Ag instead
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
