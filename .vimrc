@@ -24,6 +24,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mxw/vim-jsx' "babel syntax highlighting
 Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
 Plugin 'elixir-lang/vim-elixir' "Syntax highlighting for .eex, .exs, .ex
+Plugin 'slashmili/alchemist.vim'
 Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
 Plugin 'Yggdroot/indentLine' "View indentation level
 Plugin 'mileszs/ack.vim' "Ack searcher
