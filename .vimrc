@@ -28,6 +28,8 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
 Plugin 'Yggdroot/indentLine' "View indentation level
 Plugin 'mileszs/ack.vim' "Ack searcher
+Plugin 'vim-airline/vim-airline' "Light & simple status bar
+Plugin 'vim-airline/vim-airline-themes' "self explanatory
 
 Bundle 'majutsushi/tagbar'
 
@@ -127,6 +129,8 @@ cmap ff! find
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
 syntax on
+set cursorline "horizontal highlight
+set cursorcolumn "vertical highlight
 
 " ----------------------------------------------------------------- "
 " Skeletons                                                         "
@@ -218,6 +222,12 @@ if executable('ag')
 endif
 
 " ----------------------------------------------------------------- "
+" Plugin: vim-airline
+" ----------------------------------------------------------------- "
+let g:airline_powerline_fonts = 1
+let g:airline_theme='wombat'
+
+" ----------------------------------------------------------------- "
 " Python/ Django setup
 " ----------------------------------------------------------------- "
 autocmd FileType python set sw=4
@@ -228,8 +238,9 @@ ab ipdb import ipdb; ipdb.set_trace()
 ab _main if __name__ == '__main__':
 
 " ----------------------------------------------------------------- "
-" tag file TODO: more about this
+" tag file
 " ----------------------------------------------------------------- "
+" TODO: more about this
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
