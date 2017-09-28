@@ -225,7 +225,7 @@ endif
 " Plugin: vim-airline
 " ----------------------------------------------------------------- "
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+let g:airline_theme='dark_minimal'
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
