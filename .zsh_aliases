@@ -6,6 +6,11 @@ alias install='sudo apt-get update && sudo apt-get install -y'
 alias clean='sudo apt-get autoremove -y && sudo apt-get autoclean -y'
 
 # -------------------------------------------------------------------
+# Raspberry Pie
+# -------------------------------------------------------------------
+alias rssh='ssh pi@192.168.0.113'
+
+# -------------------------------------------------------------------
 # VIM
 # -------------------------------------------------------------------
 alias v=vim
@@ -56,8 +61,9 @@ alias vrep='vagrant reload --provision'
 # Elixir/ Phoenix
 # -------------------------------------------------------------------
 # Alias vagrant
-alias mt='mix test --trace'
-alias mtt='mix test'
+alias mt='MIX_ENV=test mix do compile --warning-as-errors, test'
+alias mtt='MIX_ENV=test mix do compile --warning-as-errors, test --trace'
+alias mat='for app in apps/**; do cd $app && MIX_ENV=test mix do compile --warning-as-errors, test; cd ../..; done'
 
 # -------------------------------------------------------------------
 # Functional Commands
