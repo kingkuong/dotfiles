@@ -228,6 +228,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='dark_minimal'
 
 " ----------------------------------------------------------------- "
+" Plugin: python-mode
+" ----------------------------------------------------------------- "
+let g:pymode_lint_ignore = "W0401,E501"
+
+" ----------------------------------------------------------------- "
 " Python/ Django setup
 " ----------------------------------------------------------------- "
 autocmd FileType python set sw=4
@@ -256,6 +261,7 @@ execute pathogen#infect()
 " List of Pathogen installed Plugin:
 " - speeddating
 " - unimpaired
+" - python-mode
 " - YouCompleteMe
 "   **Quick Guide**
 "       - cd ~/.vim/bundle
