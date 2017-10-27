@@ -17,19 +17,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 " list of Github plugins Vundle
 Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive' "git wrapper
+Plugin 'scrooloose/nerdtree'                    "directory viewing
+Plugin 'tpope/vim-fugitive'                     "git wrapper
 Plugin 'pangloss/vim-javascript'
-Plugin 'mattn/emmet-vim'
-Plugin 'mxw/vim-jsx' "babel syntax highlighting
-Plugin 'valloric/MatchTagAlways' "HTML tag highlighting
-Plugin 'elixir-lang/vim-elixir' "Syntax highlighting for .eex, .exs, .ex
+Plugin 'mattn/emmet-vim'                        "emmet plugin for writing faster HTML
+Plugin 'mxw/vim-jsx'                            "babel syntax highlighting
+Plugin 'valloric/MatchTagAlways'                "HTML tag highlighting
+Plugin 'elixir-lang/vim-elixir'                 "Syntax highlighting for .eex, .exs, .ex
 Plugin 'slashmili/alchemist.vim'
-Plugin 'elzr/vim-json' "Syntax highlighting for Json & JsonP
-Plugin 'Yggdroot/indentLine' "View indentation level
-Plugin 'mileszs/ack.vim' "Ack searcher
-Plugin 'vim-airline/vim-airline' "Light & simple status bar
-Plugin 'vim-airline/vim-airline-themes' "self explanatory
+Plugin 'elzr/vim-json'                          "Syntax highlighting for Json & JsonP
+Plugin 'Yggdroot/indentLine'                    "View indentation level
+Plugin 'mileszs/ack.vim'                        "Ack searcher
+Plugin 'vim-airline/vim-airline'                "Light & simple status bar
+Plugin 'vim-airline/vim-airline-themes'
 
 Bundle 'majutsushi/tagbar'
 
@@ -47,18 +47,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
-" ----------------------------------------------------------------- "
-" Plugins installed with Plug
-" ----------------------------------------------------------------- "
-
-" Plug Config
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
-
-" Initialize plugin system
-call plug#end()
-
+"
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
@@ -258,19 +247,3 @@ autocmd FileType mkd set spell
 " Pathogen
 " ----------------------------------------------------------------- "
 execute pathogen#infect()
-" List of Pathogen installed Plugin:
-" - speeddating
-" - unimpaired
-" - python-mode
-" - YouCompleteMe
-"   **Quick Guide**
-"       - cd ~/.vim/bundle
-"       - git clone https://github.com/Valloric/YouCompleteMe.git
-"       - git submodule update --init --recursive
-"       - Make sure these libraries are installed
-"           sudo apt-get install build-essential cmake
-"           sudo apt-get install python-dev python3-dev
-"           node/npm
-"       This will install YCM with syntax support for C-family language,
-"               Python and Javascript
-"       - ./install.py --clang-completer --tern-completer
