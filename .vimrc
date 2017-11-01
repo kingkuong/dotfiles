@@ -112,7 +112,6 @@ cmap w!! w !sudo tee % > /dev/null %
 
 cmap aa! argadd%
 cmap ad! argdelete%
-cmap ff! find
 
 " enable the Rpdf command to read PDF inside vim
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
@@ -121,10 +120,15 @@ syntax on
 set cursorline "horizontal highlight
 set cursorcolumn "vertical highlight
 
-" ----------------------------------------------------------------- "
-" Skeletons                                                         "
-" ----------------------------------------------------------------- "
+" -----------------------------------------------------------------
+" Skeletons
+" -----------------------------------------------------------------
 au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
+
+" -----------------------------------------------------------------
+" Settings by filetype
+" -----------------------------------------------------------------
+au BufNewFile,BufRead *.js, *.css, *.html set ts=2 sts=2 sw=2
 
 " ----------------------------------------------------------------- "
 " Colors                                                            "
