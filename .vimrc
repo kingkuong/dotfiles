@@ -128,7 +128,7 @@ au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
 " -----------------------------------------------------------------
 " Settings by filetype
 " -----------------------------------------------------------------
-au BufNewFile,BufRead *.js, *.css, *.html set ts=2 sts=2 sw=2
+au BufNewFile,BufRead *.js,*.js,*.html set ts=2 sts=2 sw=2
 
 " ----------------------------------------------------------------- "
 " Colors                                                            "
