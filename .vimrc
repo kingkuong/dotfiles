@@ -81,6 +81,13 @@ set smarttab
 setlocal foldmethod=syntax "folding by syntax highlighting
 
 autocmd BufWritePre * :%s/\s\+$//e      " trim whitespace automatically
+
+" cursor appear in its previous position when open files
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
 " ----------------------------------------------------------------- "
 " Mapping                                                         "
 " ----------------------------------------------------------------- "
