@@ -153,9 +153,11 @@ let g:badwolf_darkgutter = 1
 " ----------------------------------------------------------------- "
 " Plugin: NerdTree
 " ----------------------------------------------------------------- "
+let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
-
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeAutoDeleteBuffer = 1
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
 
