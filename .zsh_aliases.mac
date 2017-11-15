@@ -1,0 +1,6 @@
+# -------------------------------------------------------------------
+# General aliases
+# -------------------------------------------------------------------
+alias update='brew update && brew upgrade'
+alias install='brew install'
+alias clean='brew cleanup'

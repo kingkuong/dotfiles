@@ -1,16 +1,4 @@
 # -------------------------------------------------------------------
-# General aliases
-# -------------------------------------------------------------------
-alias update='sudo apt-get update && sudo apt-get upgrade -y'
-alias install='sudo apt-get update && sudo apt-get install -y'
-alias clean='sudo apt-get autoremove -y && sudo apt-get autoclean -y'
-
-# -------------------------------------------------------------------
-# Raspberry Pie
-# -------------------------------------------------------------------
-alias rssh='ssh pi@192.168.0.113'
-
-# -------------------------------------------------------------------
 # VIM
 # -------------------------------------------------------------------
 alias v=vim
@@ -68,13 +56,6 @@ alias mat='for app in apps/**; do cd $app && MIX_ENV=test mix do compile --warni
 # -------------------------------------------------------------------
 # Functional Commands
 # -------------------------------------------------------------------
-# Fix dropbox icon hiding problem in XFCE
-dropbox_fix() {
-    dropbox stop &&
-    DBUS_SESSION_BUS_ADDRESS=''
-    dropbox start
-}
-
 # Running command in a loop
 # Usage: 'run_loops times(int) command'
 run_loops() {
@@ -92,14 +73,10 @@ kill_port()
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
-# Map PortA to PortB using iptables
-# Usage: map_port portA(int) portB(int)
-map_port()
-{
-    sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport "$1" -j REDIRECT --to-port "$2"
-}
-
-# More aliases files
-if [ -f ~/.zsh_aliases.logit ]; then
-    source ~/.zsh_aliases.logit
-fi
+# Loading alias file
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     source ~/.zsh_aliases.linux;;
+    Darwin*)    source ~/.zsh_aliases.mac;;
+    *)          echo "unknown OS"
+esac
