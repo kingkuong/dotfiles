@@ -1,53 +1,42 @@
 " ----------------------------------------------------------------- "
-" Vundle config
+" Plugins installed with Plug
 " ----------------------------------------------------------------- "
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Plugin list
+Plug 'elixir-lang/vim-elixir'                   "Syntax highlighting for .eex, .exs, .ex
+Plug 'elzr/vim-json'                            "Syntax highlighting for Json & JsonP
+Plug 'flazz/vim-colorschemes'
+Plug 'mattn/emmet-vim'                          "Emmet plugin for writing faster HTML
+Plug 'mileszs/ack.vim'                          "Ack searcher
+Plug 'mxw/vim-jsx'                              "Babel syntax highlighting
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'                      "Directory viewing
+Plug 'slashmili/alchemist.vim'                  "Elixir integration
+Plug 'tpope/vim-fugitive'                       "Git wrapper
+Plug 'valloric/MatchTagAlways'                  "HTML tag highlighting
+Plug 'vim-airline/vim-airline'                  "Light & simple status bar
+Plug 'vim-airline/vim-airline-themes'
+Plug 'yggdroot/indentLine'                      "View indentation level
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-sensible'                       "Agreeable vim configs
+Plug 'python-mode/python-mode'
+Plug 'tpope/vim-unimpaired'                     "Convenient configs
+Plug 'tpope/vim-speeddating'                    "Date objects
 
-" ----------------------------------------------------------------- "
-" Plugins installed with Vundle
-" ----------------------------------------------------------------- "
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-" list of Github plugins Vundle
-Plugin 'flazz/vim-colorschemes'
-Plugin 'scrooloose/nerdtree'                    "directory viewing
-Plugin 'tpope/vim-fugitive'                     "git wrapper
-Plugin 'pangloss/vim-javascript'
-Plugin 'mattn/emmet-vim'                        "emmet plugin for writing faster HTML
-Plugin 'mxw/vim-jsx'                            "babel syntax highlighting
-Plugin 'valloric/MatchTagAlways'                "HTML tag highlighting
-Plugin 'elixir-lang/vim-elixir'                 "Syntax highlighting for .eex, .exs, .ex
-Plugin 'slashmili/alchemist.vim'
-Plugin 'elzr/vim-json'                          "Syntax highlighting for Json & JsonP
-Plugin 'Yggdroot/indentLine'                    "View indentation level
-Plugin 'mileszs/ack.vim'                        "Ack searcher
-Plugin 'vim-airline/vim-airline'                "Light & simple status bar
-Plugin 'vim-airline/vim-airline-themes'
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-Bundle 'majutsushi/tagbar'
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
