@@ -1,28 +1,37 @@
 " ----------------------------------------------------------------- "
 " Plugins installed with Plug
 " ----------------------------------------------------------------- "
+" Automatic installation of Vim-Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
 Plug 'elixir-lang/vim-elixir'                   "Syntax highlighting for .eex, .exs, .ex
 Plug 'elzr/vim-json'                            "Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
+Plug 'junegunn/goyo.vim'
+Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'                          "Emmet plugin for writing faster HTML
 Plug 'mileszs/ack.vim'                          "Ack searcher
 Plug 'mxw/vim-jsx'                              "Babel syntax highlighting
 Plug 'pangloss/vim-javascript'
+Plug 'python-mode/python-mode'
 Plug 'scrooloose/nerdtree'                      "Directory viewing
 Plug 'slashmili/alchemist.vim'                  "Elixir integration
 Plug 'tpope/vim-fugitive'                       "Git wrapper
+Plug 'tpope/vim-sensible'                       "Agreeable vim configs
+Plug 'tpope/vim-speeddating'                    "Date objects
+Plug 'tpope/vim-unimpaired'                     "Convenient configs
 Plug 'valloric/MatchTagAlways'                  "HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  "Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentLine'                      "View indentation level
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-sensible'                       "Agreeable vim configs
-Plug 'python-mode/python-mode'
-Plug 'tpope/vim-unimpaired'                     "Convenient configs
-Plug 'tpope/vim-speeddating'                    "Date objects
+Plug 'plasticboy/vim-markdown'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
@@ -66,6 +75,9 @@ set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
+
+set ttyfast             "
+set lazyredraw
 
 setlocal foldmethod=syntax "folding by syntax highlighting
 
@@ -244,8 +256,3 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " MarkDown
 " ----------------------------------------------------------------- "
 autocmd FileType mkd set spell
-
-" ----------------------------------------------------------------- "
-" Pathogen
-" ----------------------------------------------------------------- "
-execute pathogen#infect()
