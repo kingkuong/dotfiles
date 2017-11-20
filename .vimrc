@@ -11,23 +11,23 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
-Plug 'elixir-lang/vim-elixir'                   "Syntax highlighting for .eex, .exs, .ex
+Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 Plug 'elzr/vim-json'                            "Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim'                          "Emmet plugin for writing faster HTML
+Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'mileszs/ack.vim'                          "Ack searcher
-Plug 'mxw/vim-jsx'                              "Babel syntax highlighting
+Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'python-mode/python-mode'
-Plug 'scrooloose/nerdtree'                      "Directory viewing
+Plug 'python-mode/python-mode', {'for': 'python'}
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  "Elixir integration
 Plug 'tpope/vim-fugitive'                       "Git wrapper
 Plug 'tpope/vim-sensible'                       "Agreeable vim configs
 Plug 'tpope/vim-speeddating'                    "Date objects
 Plug 'tpope/vim-unimpaired'                     "Convenient configs
-Plug 'valloric/MatchTagAlways'                  "HTML tag highlighting
+Plug 'valloric/MatchTagAlways', {'for': 'html'} "HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  "Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentLine'                      "View indentation level
@@ -35,6 +35,7 @@ Plug 'plasticboy/vim-markdown'
 
 " Plugins to checkout
 "Plug 'osyo-manga/vim-watchdogs'                 "Async linters
+"Plug 'suan/vim-instant-markdown'
 
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
@@ -54,7 +55,8 @@ call plug#end()
 " ----------------------------------------------------------------- "
 set title               " change the terminal title
 set encoding=utf-8      " show utf8-chars
-set showcmd             " count highlighted
+set noshowcmd           " not count highlighted
+set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
 set ruler               " show where I am in the command area
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
@@ -79,7 +81,7 @@ set expandtab
 set shiftwidth=4
 set smarttab
 
-set ttyfast             "
+set ttyfast             " re-drawing instead of scrolling
 set lazyredraw
 
 setlocal foldmethod=syntax "folding by syntax highlighting
@@ -237,6 +239,12 @@ let g:airline_theme='dark_minimal'
 " Plugin: python-mode
 " ----------------------------------------------------------------- "
 let g:pymode_lint_ignore = "W0401,E501,E402"
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-markdown
+" ----------------------------------------------------------------- "
+let g:vim_markdown_folding_level = 4
+let g:vim_markdown_new_list_item_indent = 2
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
