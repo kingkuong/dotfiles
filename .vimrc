@@ -33,6 +33,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentLine'                      "View indentation level
 Plug 'plasticboy/vim-markdown'
 
+" Plugins to checkout
+"Plug 'osyo-manga/vim-watchdogs'                 "Async linters
+
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
