@@ -54,6 +54,7 @@ call plug#end()
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
 syntax on
+filetype on
 
 set title               " change the terminal title
 set encoding=utf-8      " show utf8-chars
@@ -88,7 +89,7 @@ set smarttab
 
 set path=$PWD/**        " set path to current directory, for file searching
 
-setlocal foldmethod=syntax "folding by syntax highlighting
+"setlocal foldmethod=syntax "folding by syntax highlighting
 
 autocmd BufWritePre * :%s/\s\+$//e      " trim whitespace automatically
 
@@ -232,25 +233,19 @@ endif
 " ----------------------------------------------------------------- "
 " Plugin: vim-airline
 " ----------------------------------------------------------------- "
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
 let g:airline_theme='dark_minimal'
 
 " ----------------------------------------------------------------- "
 " Plugin: python-mode
 " ----------------------------------------------------------------- "
-let g:pymode_lint_ignore = "W0401,E501,E402"
+let g:pymode_lint_ignore="W0401,E501,E402"
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-markdown
 " ----------------------------------------------------------------- "
-let g:vim_markdown_folding_level = 4
-let g:vim_markdown_new_list_item_indent = 2
-
-" ----------------------------------------------------------------- "
-" Plugin: vim-markdown
-" ----------------------------------------------------------------- "
-let g:vim_markdown_folding_level = 4
-let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_folding_level=6
+let g:vim_markdown_new_list_item_indent=2
 
 " ----------------------------------------------------------------- "
 " Plugin: Goyo
