@@ -12,29 +12,29 @@ call plug#begin('~/.vim/plugged')
 
 " Plugin list
 Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
-Plug 'elzr/vim-json'                            "Syntax highlighting for Json & JsonP
+Plug 'elzr/vim-json'                            " Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
-Plug 'junegunn/goyo.vim'                        "Distraction-free writing
+Plug 'junegunn/goyo.vim', {'on': 'Goyo'}        " Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim', {'for': 'html'}
-Plug 'mileszs/ack.vim'                          "Ack searcher
+Plug 'mileszs/ack.vim'                          " Ack searcher
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'python-mode/python-mode', {'for': 'python'}
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
-Plug 'slashmili/alchemist.vim'                  "Elixir integration
-Plug 'tpope/vim-fugitive'                       "Git wrapper
-Plug 'tpope/vim-sensible'                       "Agreeable vim configs
-Plug 'tpope/vim-speeddating'                    "Date objects
-Plug 'tpope/vim-unimpaired'                     "Convenient configs
-Plug 'valloric/MatchTagAlways', {'for': 'html'} "HTML tag highlighting
-Plug 'vim-airline/vim-airline'                  "Light & simple status bar
+Plug 'slashmili/alchemist.vim'                  " Elixir integration
+Plug 'tpope/vim-fugitive'                       " Git wrapper
+Plug 'tpope/vim-sensible'                       " Agreeable vim configs
+Plug 'tpope/vim-speeddating'                    " Date objects
+Plug 'tpope/vim-unimpaired'                     " Convenient configs
+Plug 'valloric/MatchTagAlways', {'for': 'html'} " HTML tag highlighting
+Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'
-Plug 'yggdroot/indentLine'                      "View indentation level
+Plug 'yggdroot/indentLine'                      " View indentation level
 
 " Plugins to checkout
-"Plug 'osyo-manga/vim-watchdogs'                 "Async linters
+"Plug 'osyo-manga/vim-watchdogs'                 " Async linters
 "Plug 'suan/vim-instant-markdown'
 
 function! BuildYCM(info)
