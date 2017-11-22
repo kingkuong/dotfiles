@@ -14,12 +14,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
 Plug 'elzr/vim-json'                            "Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'                        "Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'mileszs/ack.vim'                          "Ack searcher
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
 Plug 'python-mode/python-mode', {'for': 'python'}
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  "Elixir integration
@@ -31,7 +32,6 @@ Plug 'valloric/MatchTagAlways', {'for': 'html'} "HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  "Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'yggdroot/indentLine'                      "View indentation level
-Plug 'plasticboy/vim-markdown'
 
 " Plugins to checkout
 "Plug 'osyo-manga/vim-watchdogs'                 "Async linters
@@ -53,16 +53,23 @@ call plug#end()
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
+syntax on
+
 set title               " change the terminal title
 set encoding=utf-8      " show utf8-chars
 set noshowcmd           " not count highlighted
 set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
-set ruler               " show where I am in the command area
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 
-set cursorline          " highlight current line
+" Enable if have terminal with fast drawing
+"set cursorline          " horizontal highlight
+"set cursorcolumn        " vertical highlight
+"set ttyfast             " re-drawing instead of scrolling
+"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+"set lazyredraw
+
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
 
@@ -73,16 +80,13 @@ set wrapscan            " set the search can to wrap around the file
 set ignorecase          " when searching
 set smartcase           " ..unless I use an uppercase character
 
-set path=$PWD/**        " set path to current directory, for file searching
-
 set tabstop=8
 set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
 
-set ttyfast             " re-drawing instead of scrolling
-set lazyredraw
+set path=$PWD/**        " set path to current directory, for file searching
 
 setlocal foldmethod=syntax "folding by syntax highlighting
 
@@ -128,10 +132,6 @@ cmap ad! argdelete%
 
 " enable the Rpdf command to read PDF inside vim
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
-
-syntax on
-set cursorline "horizontal highlight
-set cursorcolumn "vertical highlight
 
 " -----------------------------------------------------------------
 " Skeletons
@@ -245,6 +245,18 @@ let g:pymode_lint_ignore = "W0401,E501,E402"
 " ----------------------------------------------------------------- "
 let g:vim_markdown_folding_level = 4
 let g:vim_markdown_new_list_item_indent = 2
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-markdown
+" ----------------------------------------------------------------- "
+let g:vim_markdown_folding_level = 4
+let g:vim_markdown_new_list_item_indent = 2
+
+" ----------------------------------------------------------------- "
+" Plugin: Goyo
+" ----------------------------------------------------------------- "
+let g:goyo_width = 100
+let g:goyo_height = 95
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
