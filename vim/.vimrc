@@ -17,7 +17,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}        " Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim', {'for': 'html'}
-Plug 'mileszs/ack.vim'                          " Ack searcher
+Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
@@ -31,6 +31,7 @@ Plug 'tpope/vim-unimpaired'                     " Convenient configs
 Plug 'valloric/MatchTagAlways', {'for': 'html'} " HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'                  " Linters
 Plug 'yggdroot/indentLine'                      " View indentation level
 
 " Plugins to checkout
@@ -244,6 +245,7 @@ let g:pymode_lint_ignore="W0401,E501,E402"
 " ----------------------------------------------------------------- "
 " Plugin: vim-markdown
 " ----------------------------------------------------------------- "
+let g:vim_markdown_folding_disabled=0
 let g:vim_markdown_folding_level=6
 let g:vim_markdown_new_list_item_indent=2
 
@@ -252,6 +254,19 @@ let g:vim_markdown_new_list_item_indent=2
 " ----------------------------------------------------------------- "
 let g:goyo_width = 100
 let g:goyo_height = 95
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-syntastic
+" ----------------------------------------------------------------- "
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
@@ -273,4 +288,4 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " ----------------------------------------------------------------- "
 " MarkDown
 " ----------------------------------------------------------------- "
-autocmd FileType mkd set spell
+autocmd FileType markdown set spell
