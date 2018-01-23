@@ -12,16 +12,19 @@ call plug#begin('~/.vim/plugged')
 
 " Plugin list
 Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
-Plug 'elzr/vim-json'                            " Syntax highlighting for Json & JsonP
+Plug 'elzr/vim-json', {'for': 'json'}           " Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
+Plug 'jceb/vim-orgmode', {'for': 'org'}         " Orgmode's in Vim, who needs emacs
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}        " Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim', {'for': 'html'}
 Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
+Plug 'mxw/vim-jsx', {'for': 'jsx'}
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'posva/vim-vue'
 Plug 'python-mode/python-mode', {'for': 'python'}
+Plug 'sbdchd/neoformat'                         " Running code format
 Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  " Elixir integration
 Plug 'tpope/vim-fugitive'                       " Git wrapper
@@ -30,8 +33,8 @@ Plug 'tpope/vim-speeddating'                    " Date objects
 Plug 'tpope/vim-unimpaired'                     " Convenient configs
 Plug 'valloric/MatchTagAlways', {'for': 'html'} " HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-syntastic/syntastic'                  " Linters
+Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
+Plug 'vim-syntastic/syntastic'                  " Linters for various languages
 Plug 'yggdroot/indentLine'                      " View indentation level
 
 " Plugins to checkout
@@ -139,11 +142,6 @@ cmap ad! argdelete%
 " Skeletons
 " -----------------------------------------------------------------
 au BufNewFile *.html 0r ~/.vim/html.skel | let IndentStyle = 'html'
-
-" -----------------------------------------------------------------
-" Settings by filetype
-" -----------------------------------------------------------------
-au BufNewFile,BufRead *.js,*.js,*.html set ts=2 sts=2 sw=2
 
 " ----------------------------------------------------------------- "
 " Colors                                                            "
@@ -258,6 +256,10 @@ let g:goyo_height = 95
 " ----------------------------------------------------------------- "
 " Plugin: vim-syntastic
 " ----------------------------------------------------------------- "
+let g:syntastic_mode_map = {'mode': 'active',
+            \ 'active_filetypes': ['python', 'javascript'],
+            \ 'passive_filetypes': [] }
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -266,7 +268,28 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" In order for eslint to work, install global dependencies
+"       npm install -g eslint eslint-plugin-react@latest
+" Comment out to use the default jslint, which also require a global
+" dependency:
+"       npm install -g jslint
+let g:syntastic_javascript_checkers = ['eslint']
 
+" ----------------------------------------------------------------- "
+" Plugin: vim-orgmode
+" ----------------------------------------------------------------- "
+let g:org_todo_keywords = ['TODO', 'DOING', '|', 'INCOMPLETED', 'DONE', 'CANCELLED']
+
+" ----------------------------------------------------------------- "
+" Plugin: neoformat
+" ----------------------------------------------------------------- "
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.jsx Neoformat
+
+" Using prettier for formatting code, require `npm install -g prettier`
+autocmd FileType javascript setlocal formatprg=prettier
+autocmd FileType jsx setlocal formatprg=prettier
+let g:neoformat_try_formatprg = 1
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
