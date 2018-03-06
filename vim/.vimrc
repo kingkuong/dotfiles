@@ -11,27 +11,27 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
-Plug 'elixir-lang/vim-elixir', {'for': 'elixir'}
-Plug 'elzr/vim-json', {'for': 'json'}           " Syntax highlighting for Json & JsonP
+Plug 'elixir-lang/vim-elixir',                  {'for': 'elixir'}
+Plug 'elzr/vim-json',                           {'for': 'json'} " Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
-Plug 'jceb/vim-orgmode', {'for': 'org'}         " Orgmode's in Vim, who needs emacs
-Plug 'junegunn/goyo.vim', {'on': 'Goyo'}        " Distraction-free writing
+Plug 'jceb/vim-orgmode',                        {'for': 'org'} " Orgmode's in Vim, who needs emacs
+Plug 'junegunn/goyo.vim',                       {'on': 'Goyo'} " Distraction-free writing
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim', {'for': 'html'}
+Plug 'mattn/emmet-vim',                         {'for': 'html'}
 Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
-Plug 'mxw/vim-jsx', {'for': 'jsx'}
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}
+Plug 'mxw/vim-jsx',                             {'for': 'jsx'}
+Plug 'pangloss/vim-javascript',                 {'for': 'javascript'}
+Plug 'plasticboy/vim-markdown',                 {'for': 'markdown'}
 Plug 'posva/vim-vue'
-Plug 'python-mode/python-mode', {'for': 'python'}
+Plug 'python-mode/python-mode',                 {'for': 'python'}
 Plug 'sbdchd/neoformat'                         " Running code format
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
+Plug 'scrooloose/nerdtree',                     {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  " Elixir integration
 Plug 'tpope/vim-fugitive'                       " Git wrapper
 Plug 'tpope/vim-sensible'                       " Agreeable vim configs
 Plug 'tpope/vim-speeddating'                    " Date objects
 Plug 'tpope/vim-unimpaired'                     " Convenient configs
-Plug 'valloric/MatchTagAlways', {'for': 'html'} " HTML tag highlighting
+Plug 'valloric/MatchTagAlways',                 {'for': 'html'} " HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
 Plug 'vim-syntastic/syntastic'                  " Linters for various languages
@@ -71,9 +71,12 @@ set mouse=a             " use the mouse
 " Enable if have terminal with fast drawing
 "set cursorline          " horizontal highlight
 "set cursorcolumn        " vertical highlight
-"set ttyfast             " re-drawing instead of scrolling
-"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-"set lazyredraw
+
+set ttyfast             " re-drawing instead of scrolling
+set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+set lazyredraw
+set nocursorline
+set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -278,18 +281,18 @@ let g:syntastic_javascript_checkers = ['eslint']
 " ----------------------------------------------------------------- "
 " Plugin: vim-orgmode
 " ----------------------------------------------------------------- "
-let g:org_todo_keywords = ['TODO', 'DOING', '|', 'INCOMPLETED', 'DONE', 'CANCELLED']
+let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELLED']
 
 " ----------------------------------------------------------------- "
 " Plugin: neoformat
 " ----------------------------------------------------------------- "
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.jsx Neoformat
+autocmd BufWritePre *.scss Neoformat
 
 " Using prettier for formatting code, require `npm install -g prettier`
 autocmd FileType javascript setlocal formatprg=prettier
 autocmd FileType jsx setlocal formatprg=prettier
-let g:neoformat_try_formatprg = 1
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
