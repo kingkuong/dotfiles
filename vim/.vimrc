@@ -241,7 +241,12 @@ let g:airline_theme='dark_minimal'
 " ----------------------------------------------------------------- "
 " Plugin: python-mode
 " ----------------------------------------------------------------- "
+let g:pymode_options = 1
 let g:pymode_lint_ignore="W0401,E501,E402"
+let g:pymode_doc = 0
+let g:pymode_rope_looup_project = 0
+let g:pymode_rope_regenerate_on_write = 0
+let g:pymode_rope_completion = 0
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-markdown
@@ -286,11 +291,15 @@ let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELL
 " ----------------------------------------------------------------- "
 " Plugin: neoformat
 " ----------------------------------------------------------------- "
-autocmd BufWritePre *.js Neoformat
-autocmd BufWritePre *.jsx Neoformat
-autocmd BufWritePre *.scss Neoformat
+" Run the formatter on Save
+augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 " Using prettier for formatting code, require `npm install -g prettier`
+autocmd FileType javascript setlocal formatprg=prettier
+autocmd FileType jsx setlocal formatprg=prettier
 autocmd FileType javascript setlocal formatprg=prettier
 autocmd FileType jsx setlocal formatprg=prettier
 
