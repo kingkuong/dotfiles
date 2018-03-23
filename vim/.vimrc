@@ -141,6 +141,13 @@ cmap ad! argdelete%
 " enable the Rpdf command to read PDF inside vim
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
+" split into multiple lines base on pattern in normal mode
+vnoremap SS :%s//&\r/g<CR>
+" USAGE
+" - find pattern with /[pattern]
+" - high light parts need format
+" - run SS
+
 " -----------------------------------------------------------------
 " Skeletons
 " -----------------------------------------------------------------
@@ -246,7 +253,6 @@ let g:pymode_lint_ignore="W0401,E501,E402"
 let g:pymode_doc = 0
 let g:pymode_rope_looup_project = 0
 let g:pymode_rope_regenerate_on_write = 0
-let g:pymode_rope_completion = 0
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-markdown
