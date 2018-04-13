@@ -1,12 +1,8 @@
-# -------------------------------------------------------------------
-# VIM
-# -------------------------------------------------------------------
+# ALIASES
+## vim
 alias v=vim
-alias gv=gvim
 
-# -------------------------------------------------------------------
-# Git aliases
-# -------------------------------------------------------------------
+## Git aliases
 alias gl="git log --oneline --graph"
 alias gp="git push"
 alias ga="git add "
@@ -17,47 +13,40 @@ alias gc="git commit"
 alias gpl="git pull"
 alias gcl="git clone"
 
-# More colorful/ informative git log
+    # More colorful/ informative git log
 alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
-# -------------------------------------------------------------------
-# Ruby/Rails aliases
-# -------------------------------------------------------------------
+## Docker
+alias dp='docker volume prune -f \
+    && docker network prune -f \
+    && docker container prune -f \
+    && docker image prune -f'
+
+## Ruby/Rails
 alias be="bundle exec"
 
-# -------------------------------------------------------------------
-# Python/Django aliases
-# -------------------------------------------------------------------
-# Running Django development server
-# Usage: dj port_number(int)
-# TODO: accept default port of 8000
+## Python
+    # Running Django development server
+    # Usage: dj port_number(int)
+    # TODO: accept default port of 8000
 dj() {
     python manage.py runserver 0.0.0.0:"$1"
 }
-
 alias activate='source env/bin/activate'
 
-# -------------------------------------------------------------------
-# Vagrant aliases
-# -------------------------------------------------------------------
-# Alias vagrant
+## Vagrant
 alias vupp='vagrant up --provision'
 alias vrep='vagrant reload --provision'
 
-# -------------------------------------------------------------------
-# Elixir/ Phoenix
-# -------------------------------------------------------------------
-# Alias vagrant
+## Elixir
 alias mt='MIX_ENV=test mix do compile --warning-as-errors, test'
 alias mtt='MIX_ENV=test mix do compile --warning-as-errors, test --trace'
 alias mat='for app in apps/**; do cd $app && MIX_ENV=test mix do compile --warning-as-errors, test; cd ../..; done'
 
-# -------------------------------------------------------------------
-# Functional Commands
-# -------------------------------------------------------------------
-# Running command in a loop
-# Usage: 'run_loops times(int) command'
+# FUNCTIONAL COMMANDS
+## Running command in a loop
+    # Usage: 'run_loops times(int) command'
 run_loops() {
     number=$1
     shift
@@ -66,14 +55,15 @@ run_loops() {
     done
 }
 
-# Kill certain port (with sudo)
-# Usage: kill_port no(int)
+## Kill certain port (with sudo)
+    # Usage: kill_port no(int)
 kill_port()
 {
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
-# Loading alias file
+# SETTINGS
+## Loading alias file
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)     source ~/.zsh_aliases.linux;;
