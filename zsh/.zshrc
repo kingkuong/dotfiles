@@ -123,3 +123,5 @@ export PATH=$PATH:$GOROOT/bin
 
 # REACT NATIVE
 export REACT_EDITOR=subl
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

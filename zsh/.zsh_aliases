@@ -1,6 +1,7 @@
 # ALIASES
 ## vim
 alias v=vim
+alias t=tmux
 
 ## Git aliases
 alias gl="git log --oneline --graph"
@@ -12,6 +13,11 @@ alias gd="git diff -w"
 alias gc="git commit"
 alias gpl="git pull"
 alias gcl="git clone"
+
+gitcheckout() {
+    branch=$1
+    git checkout -b $branch -t origin/$branch
+}
 
     # More colorful/ informative git log
 alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
