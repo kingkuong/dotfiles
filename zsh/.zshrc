@@ -85,7 +85,7 @@ export LANG=en_US.UTF-8
 
 # Enable Vim mode
 bindkey -v
-bindkey -M viins ‘jk’ vi-cmd-mode #bindkey jk to enter vim
+bindkey 'jk' vi-cmd-mode #bindkey jk to enter vim
 
 # Include aliases files
 if [ -f ~/.zsh_aliases ]; then
