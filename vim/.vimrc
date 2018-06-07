@@ -47,7 +47,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --tern-completer
+    !./install.py --clang-completer --tern-completer --js-completer
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -69,13 +69,12 @@ set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 
 " Enable if have terminal with fast drawing
-"set cursorline          " horizontal highlight
-"set cursorcolumn        " vertical highlight
+set cursorcolumn        " vertical highlight
+set cursorline          " horizontal highlight
 
-set ttyfast             " re-drawing instead of scrolling
-set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-set lazyredraw
-set nocursorline
+"set ttyfast             " re-drawing instead of scrolling
+"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+"set lazyredraw
 set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
@@ -88,7 +87,7 @@ set wrapscan            " set the search can to wrap around the file
 set ignorecase          " when searching
 set smartcase           " ..unless I use an uppercase character
 
-set tabstop=8
+set tabstop=4
 set softtabstop=0
 set expandtab
 set shiftwidth=4
@@ -236,7 +235,8 @@ let g:indentLine_noConcealCursor=""
 " ----------------------------------------------------------------- "
 " To use Ag instead
 if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
+    let g:ackprg = 'ag --vimgrep --smart-case'
+
 endif
 
 " ----------------------------------------------------------------- "
