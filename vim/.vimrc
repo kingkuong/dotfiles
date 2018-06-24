@@ -68,13 +68,13 @@ set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 
 " Enable if have terminal with fast drawing
-"set cursorcolumn        " vertical highlight
-"set cursorline          " horizontal highlight
+set cursorcolumn        " vertical highlight
+set cursorline          " horizontal highlight
 
-set ttyfast             " re-drawing instead of scrolling
-set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-set lazyredraw
-set ttimeoutlen=100
+"set ttyfast             " re-drawing instead of scrolling
+"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+"set lazyredraw
+"set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -172,8 +172,12 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
+
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
+
+" NERDTree Ignore List
+let g:NERDTreeIgnore = ['.pyc$', '.ropeproject']
 
 " Toggle  NERDTree opening with working file's directory
 function! NERDTreeToggleInCurDir()
@@ -190,16 +194,17 @@ function! NERDTreeToggleInCurDir()
     endif
 endfunction
 
+map <C-n> :call NERDTreeToggleInCurDir()<CR>
+
 " Function to highlight different extensions
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
+
 call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-
-" NERDTree Mapping
-map <C-n> :call NERDTreeToggleInCurDir()<CR>
+call NERDTreeHighlightFile('py', 'Green', 'none', 'green', '#151515')
 
 " ----------------------------------------------------------------- "
 " Plugin: Emmet
