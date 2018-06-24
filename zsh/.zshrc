@@ -86,6 +86,9 @@ export LANG=en_US.UTF-8
 # Enable Vim mode
 bindkey -v
 bindkey 'jk' vi-cmd-mode #bindkey jk to enter vim
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'g~' vi-open-swap-case
+bindkey -a G end-of-buffer-or-history
 
 # Include aliases files
 if [ -f ~/.zsh_aliases ]; then
@@ -101,27 +104,25 @@ export TERM="xterm-256color"
 setopt RM_STAR_WAIT
 
 eval $(thefuck --alias)
+eval $(pip completion --zsh)
+
+# #######################################
+# Environment Variables
+# #######################################
 
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$HOME/Android/Sdk
 export PATH=$PATH:$HOME/Android/Sdk/tools
 export PATH=$PATH:$HOME/Android/Sdk/platform-tools
-
 # AWS
 export PATH=$PATH:~/.local/bin
-
 # GO
 export GOROOT=$HOME/go
 export PATH=$PATH:$GOROOT/bin
-
 # REACT NATIVE
 export REACT_EDITOR=subl
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
