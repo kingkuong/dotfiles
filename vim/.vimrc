@@ -53,7 +53,6 @@ endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 call plug#end()
-
 " ----------------------------------------------------------------- "
 " Vim config                                                        "
 " ----------------------------------------------------------------- "
@@ -69,12 +68,12 @@ set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 
 " Enable if have terminal with fast drawing
-set cursorcolumn        " vertical highlight
-set cursorline          " horizontal highlight
+"set cursorcolumn        " vertical highlight
+"set cursorline          " horizontal highlight
 
-"set ttyfast             " re-drawing instead of scrolling
-"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-"set lazyredraw
+set ttyfast             " re-drawing instead of scrolling
+set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+set lazyredraw
 set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
@@ -288,6 +287,7 @@ let g:syntastic_check_on_wq = 0
 " dependency:
 "       npm install -g jslint
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['flake8']
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-orgmode
@@ -308,6 +308,9 @@ autocmd FileType javascript setlocal formatprg=prettier
 autocmd FileType jsx setlocal formatprg=prettier
 autocmd FileType javascript setlocal formatprg=prettier
 autocmd FileType jsx setlocal formatprg=prettier
+
+" Using autopep8 for formating python
+let g:neoformat_enabled_python = ['autopep8']
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
