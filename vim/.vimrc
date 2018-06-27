@@ -177,7 +177,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeShowHidden = 1
 
 " NERDTree Ignore List
-let g:NERDTreeIgnore = ['.pyc$', '.ropeproject']
+let g:NERDTreeIgnore = ['.pyc$', '.ropeproject', '__pycache__']
 
 " Toggle  NERDTree opening with working file's directory
 function! NERDTreeToggleInCurDir()
