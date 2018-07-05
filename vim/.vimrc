@@ -23,8 +23,6 @@ Plug 'mxw/vim-jsx',                             {'for': 'jsx'}
 Plug 'pangloss/vim-javascript',                 {'for': 'javascript'}
 Plug 'plasticboy/vim-markdown',                 {'for': 'markdown'}
 Plug 'posva/vim-vue'
-Plug 'python-mode/python-mode',                 {'for': 'python'}
-Plug 'sbdchd/neoformat'                         " Running code format
 Plug 'scrooloose/nerdtree',                     {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  " Elixir integration
 Plug 'tpope/vim-fugitive'                       " Git wrapper
@@ -34,11 +32,10 @@ Plug 'tpope/vim-unimpaired'                     " Convenient configs
 Plug 'valloric/MatchTagAlways',                 {'for': 'html'} " HTML tag highlighting
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
-Plug 'vim-syntastic/syntastic'                  " Linters for various languages
 Plug 'yggdroot/indentLine'                      " View indentation level
+Plug 'w0rp/ale'                                 " Vim 8's Async linter
 
 " Plugins to checkout
-"Plug 'osyo-manga/vim-watchdogs'                 " Async linters
 "Plug 'suan/vim-instant-markdown'
 
 function! BuildYCM(info)
@@ -68,13 +65,13 @@ set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 
 " Enable if have terminal with fast drawing
-set cursorcolumn        " vertical highlight
-set cursorline          " horizontal highlight
+"set cursorcolumn        " vertical highlight
+"set cursorline          " horizontal highlight
 
-"set ttyfast             " re-drawing instead of scrolling
-"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-"set lazyredraw
-"set ttimeoutlen=100
+set ttyfast             " re-drawing instead of scrolling
+set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+set lazyredraw
+set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -250,15 +247,6 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='dark_minimal'
 
 " ----------------------------------------------------------------- "
-" Plugin: python-mode
-" ----------------------------------------------------------------- "
-let g:pymode_options = 1
-let g:pymode_lint_ignore="W0401,E501,E402"
-let g:pymode_doc = 0
-let g:pymode_rope_looup_project = 0
-let g:pymode_rope_regenerate_on_write = 0
-
-" ----------------------------------------------------------------- "
 " Plugin: vim-markdown
 " ----------------------------------------------------------------- "
 let g:vim_markdown_folding_disabled=0
@@ -272,50 +260,27 @@ let g:goyo_width = 100
 let g:goyo_height = 95
 
 " ----------------------------------------------------------------- "
-" Plugin: vim-syntastic
+" Plugin: ale
 " ----------------------------------------------------------------- "
-let g:syntastic_mode_map = {'mode': 'active',
-            \ 'active_filetypes': ['python', 'javascript'],
-            \ 'passive_filetypes': [] }
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" In order for eslint to work, install global dependencies
-"       npm install -g eslint eslint-plugin-react@latest
-" Comment out to use the default jslint, which also require a global
-" dependency:
-"       npm install -g jslint
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8']
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 500
+let g:ale_lint_on_insert_leave = 1
+" Ale requires these tools to be installed globally
+let g:ale_fixers = {
+            \'python': ['autopep8'],
+            \'javascript': ['prettier'],
+            \}
+let g:ale_linters = {
+            \'python': ['pylint'],
+            \'javascript': ['eslint'],
+            \}
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-orgmode
 " ----------------------------------------------------------------- "
 let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELLED']
-
-" ----------------------------------------------------------------- "
-" Plugin: neoformat
-" ----------------------------------------------------------------- "
-" Run the formatter on Save
-augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
-augroup END
-
-" Using prettier for formatting code, require `npm install -g prettier`
-autocmd FileType javascript setlocal formatprg=prettier
-autocmd FileType jsx setlocal formatprg=prettier
-autocmd FileType javascript setlocal formatprg=prettier
-autocmd FileType jsx setlocal formatprg=prettier
-
-" Using autopep8 for formating python
-let g:neoformat_enabled_python = ['autopep8']
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
@@ -328,9 +293,8 @@ ab ipdb import ipdb; ipdb.set_trace()
 ab _main if __name__ == '__main__':
 
 " ----------------------------------------------------------------- "
-" tag file
+" Tag file
 " ----------------------------------------------------------------- "
-" TODO: more about this
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
