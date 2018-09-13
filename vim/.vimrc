@@ -14,7 +14,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'elixir-lang/vim-elixir',                  {'for': 'elixir'}
 Plug 'elzr/vim-json',                           {'for': 'json'} " Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
-Plug 'jceb/vim-orgmode',                        {'for': 'org'} " Orgmode's in Vim, who needs emacs
+Plug 'akstrfn/vim-orgmode',                     {'for': 'org', 'branch': 'stopiter_fix'} " Orgmode's in Vim
 Plug 'junegunn/goyo.vim',                       {'on': 'Goyo'} " Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim',                         {'for': 'html'}
@@ -44,7 +44,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !./install.py --clang-completer --tern-completer --js-completer
+    ./install.py --clang-completer --tern-completer --js-completer
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -67,11 +67,11 @@ set mouse=a             " use the mouse
 " Enable if have terminal with fast drawing
 "set cursorcolumn        " vertical highlight
 "set cursorline          " horizontal highlight
-
-set ttyfast             " re-drawing instead of scrolling
-set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-set lazyredraw
-set ttimeoutlen=100
+"
+"set ttyfast             " re-drawing instead of scrolling
+"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+"set lazyredraw
+"set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -90,6 +90,9 @@ set shiftwidth=4
 set smarttab
 
 set path=$PWD/**        " set path to current directory, for file searching
+
+set exrc                " forcing vim to execute directory-level vimrc
+set secure              " block certain actions in directory-level vimrc for security reason (duh)
 
 "setlocal foldmethod=syntax "folding by syntax highlighting
 
@@ -290,6 +293,7 @@ autocmd FileType python set ts=4
 autocmd FileType python set sts=4
 ab pdb import pdb; pdb.set_trace()
 ab ipdb import ipdb; ipdb.set_trace()
+ab pprint from pprint import pprint as pp
 ab _main if __name__ == '__main__':
 
 " ----------------------------------------------------------------- "
