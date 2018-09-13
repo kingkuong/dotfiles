@@ -7,3 +7,5 @@
 dump.*
 
 .ropeproject
+
+.DS_Store
