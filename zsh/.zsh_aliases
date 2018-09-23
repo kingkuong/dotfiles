@@ -1,9 +1,11 @@
 # ALIASES
 ## vim
 alias v=vim
+
+## Tmux
 alias t=tmux
 
-## Git aliases
+## Git
 alias gl="git log --oneline --graph"
 alias gp="git push"
 alias ga="git add "
@@ -14,7 +16,7 @@ alias gc="git commit"
 alias gpl="git pull"
 alias gcl="git clone"
 
-gitcheckout() {
+gck() {
     branch=$1
     git checkout -b $branch -t origin/$branch
 }
@@ -71,9 +73,10 @@ kill_port()
 
 # SETTINGS
 ## Loading alias file
-unameOut="$(uname -s)"
+unameOut="$(uname -n)"
 case "${unameOut}" in
-    Linux*)     source ~/.zsh_aliases.linux;;
-    Darwin*)    source ~/.zsh_aliases.mac;;
-    *)          echo "unknown OS"
+    archlinux*)     source ~/.zsh_aliases.arch;;
+    ubuntu*)        source ~/.zsh_aliases.linux;;
+    Darwin*)        source ~/.zsh_aliases.mac;;
+    *)              echo "unknown OS"
 esac
