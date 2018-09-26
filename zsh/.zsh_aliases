@@ -1,9 +1,10 @@
-# ALIASES
-## vim
+# Vim
 alias v=vim
+
+# Tmux
 alias t=tmux
 
-## Git aliases
+# Git
 alias gl="git log --oneline --graph"
 alias gp="git push"
 alias ga="git add "
@@ -12,9 +13,14 @@ alias gr="git reset"
 alias gd="git diff -w"
 alias gc="git commit"
 alias gpl="git pull"
-alias gcl="git clone"
+alias ginit="git init; git remote add origin https://github.com/cuongtnx/${PWD##*/}"
 
-gitcheckout() {
+function gcl() {
+    repository=$1
+    git clone https://github.com/cuongtnx/${repository}
+}
+
+function gck() {
     branch=$1
     git checkout -b $branch -t origin/$branch
 }
@@ -23,21 +29,24 @@ gitcheckout() {
 alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
-## Docker
+# Docker
 alias dp='docker volume prune -f \
     && docker network prune -f \
     && docker container prune -f \
     && docker image prune -f'
-alias dc='docker-compose down && docker-compose up --build'
+alias dc='docker-compose down && docker-compose up'
+alias dcb='docker-compose down && docker-compose up --build'
+alias de='docker-compose exec'
+alias dr='docker-compose run'
 
-## Ruby/Rails
+# Ruby/Rails
 alias be="bundle exec"
 
-## Python
+# Python
     # Running Django development server
     # Usage: dj port_number(int)
     # TODO: accept default port of 8000
-dj() {
+function dj() {
     python manage.py runserver 0.0.0.0:"$1"
 }
 alias activate='source env/bin/activate'
@@ -53,27 +62,30 @@ alias mat='for app in apps/**; do cd $app && MIX_ENV=test mix do compile --warni
 
 # FUNCTIONAL COMMANDS
 ## Running command in a loop
-    # Usage: 'run_loops times(int) command'
-run_loops() {
+    # Usage: 'loop-for times(int) command'
+function loop-for() {
     number=$1
     shift
     for i in `seq $number`; do
-    $@
+        $@
     done
 }
 
 ## Kill certain port (with sudo)
     # Usage: kill_port no(int)
-kill_port()
+function kill-port()
 {
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
 # SETTINGS
-## Loading alias file
-unameOut="$(uname -s)"
-case "${unameOut}" in
-    Linux*)     source ~/.zsh_aliases.linux;;
-    Darwin*)    source ~/.zsh_aliases.mac;;
+## Loading alias file based on Distro
+base_name="$(uname -s)"
+case "${base_name}" in
+    Linux*) case "$(head -1 /etc/*-release)" in
+                *NAME=\"Arch*)      source $HOME/.zsh_aliases.arch;;
+                *)                  source $HOME/.zsh_aliases.linux;;
+            esac;;
+    Darwin*)    source $HOME/.zsh_aliases.osx;;
     *)          echo "unknown OS"
 esac
