@@ -4,7 +4,6 @@ alias v=vim
 # Tmux
 alias t=tmux
 
-# Git
 alias gl="git log --oneline --graph"
 alias gp="git push"
 alias ga="git add "
@@ -78,7 +77,6 @@ function kill-port()
     sudo kill -9 $(sudo lsof -t -i:"$1")
 }
 
-# SETTINGS
 ## Loading alias file based on Distro
 base_name="$(uname -s)"
 case "${base_name}" in
