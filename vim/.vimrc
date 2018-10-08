@@ -44,7 +44,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    ./install.py --clang-completer --tern-completer --js-completer
+      ./install.py --clang-completer --tern-completer --js-completer
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -63,6 +63,8 @@ set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
+
+set directory=.        " changed directory for swap files
 
 " Enable if have terminal with fast drawing
 "set cursorcolumn        " vertical highlight
