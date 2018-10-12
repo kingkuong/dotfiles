@@ -34,7 +34,9 @@ Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
 Plug 'yggdroot/indentLine'                      " View indentation level
 Plug 'w0rp/ale'                                 " Vim 8's Async linter
-
+Plug 'leafgarland/typescript-vim',              {'for': ['ts', 'tsx'] } " TypeScript syntax highlighting
+Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeScript DOM syntax highlighting
+Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
 " Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
 
@@ -44,7 +46,10 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-      ./install.py --clang-completer --tern-completer --js-completer
+      ./install.py --clang-completer \
+                    --tern-completer \
+                    --js-completer \
+                    --go-completer \
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
