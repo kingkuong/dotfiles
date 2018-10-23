@@ -62,6 +62,7 @@ set title               " change the terminal title
 set encoding=utf-8      " show utf8-chars
 set noshowcmd           " not count highlighted
 set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
+set scrolloff=10        " always show 10 lines below scrolling
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
