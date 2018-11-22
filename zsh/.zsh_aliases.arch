@@ -1,4 +1,4 @@
-alias update='sudo pacman -Syyu'
+alias update='yaourt -Syyu'
 alias clean='paccache -r'
-alias get='sudo pacman -S'
+alias install='yaourt -S'
 alias night-light='gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature'
