@@ -37,6 +37,7 @@ Plug 'w0rp/ale'                                 " Vim 8's Async linter
 Plug 'leafgarland/typescript-vim',              {'for': ['ts', 'tsx'] } " TypeScript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeScript DOM syntax highlighting
 Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
+Plug 'martinda/Jenkinsfile-vim-syntax'
 " Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
 
@@ -46,7 +47,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-      !./install.py --clang-completer --tern-completer --js-completer --go-completer
+      !./install.py --clang-completer --tern-completer --js-completer
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -62,7 +63,6 @@ set title               " change the terminal title
 set encoding=utf-8      " show utf8-chars
 set noshowcmd           " not count highlighted
 set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
-set scrolloff=10        " always show 10 lines below scrolling
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
@@ -150,6 +150,11 @@ vnoremap SS :%s//&\r/g<CR>
 " - find pattern with /[pattern]
 " - high light parts need format
 " - run SS
+
+" enable search and replace ALL words under cursor
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+" USAGE:
+"  - \s
 
 " -----------------------------------------------------------------
 " Skeletons
