@@ -38,6 +38,10 @@ Plug 'leafgarland/typescript-vim',              {'for': ['ts', 'tsx'] } " TypeSc
 Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeScript DOM syntax highlighting
 Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
 Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
+Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
+Plug 'garbas/vim-snipmate'                      " Code snippet generator
+"Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
 " Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
 
@@ -70,13 +74,13 @@ set mouse=a             " use the mouse
 set directory=.        " changed directory for swap files
 
 " Enable if have terminal with fast drawing
-"set cursorcolumn        " vertical highlight
-"set cursorline          " horizontal highlight
-"
-"set ttyfast             " re-drawing instead of scrolling
-"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-"set lazyredraw
-"set ttimeoutlen=100
+set cursorcolumn        " vertical highlight
+set cursorline          " horizontal highlight
+
+set ttyfast             " re-drawing instead of scrolling
+set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+set lazyredraw
+set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -294,6 +298,18 @@ let g:ale_linters = {
 " Plugin: vim-orgmode
 " ----------------------------------------------------------------- "
 let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELLED']
+
+" ----------------------------------------------------------------- "
+" Plugin: yankring
+" ----------------------------------------------------------------- "
+nnoremap <silent> <F11> :YRShow<CR>\n
+
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-slime
+" ----------------------------------------------------------------- "
+"let g:slime_target = "tmux" "using tmux instead of GNU screen
+"let g:slime_paste_file = "$HOME/.slime_paste"
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
