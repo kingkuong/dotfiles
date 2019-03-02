@@ -21,7 +21,7 @@ Plug 'mattn/emmet-vim',                         {'for': 'html'}
 Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
 Plug 'mxw/vim-jsx',                             {'for': 'jsx'}
 Plug 'pangloss/vim-javascript',                 {'for': 'javascript'}
-Plug 'plasticboy/vim-markdown',                 {'for': 'markdown'}
+"Plug 'plasticboy/vim-markdown',                 {'for': 'markdown'}
 Plug 'posva/vim-vue'
 Plug 'scrooloose/nerdtree',                     {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
 Plug 'slashmili/alchemist.vim'                  " Elixir integration
@@ -40,7 +40,7 @@ Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeSc
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
 Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
-Plug 'garbas/vim-snipmate'                      " Code snippet generator
+"Plug 'garbas/vim-snipmate'                      " Code snippet generator
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
 " Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
@@ -70,6 +70,7 @@ set scrolljump=5        " when fast scrolling, do 5 lines instead of 1
 set number              " display number line
 set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
+set conceallevel=0           " no concealing
 
 set directory=.        " changed directory for swap files
 
@@ -241,12 +242,11 @@ nmap <F6> :TagbarToggle<CR>
 " ----------------------------------------------------------------- "
 " Plugin: vim-json
 " ----------------------------------------------------------------- "
-set conceallevel=2
 
 " ----------------------------------------------------------------- "
 " Plugin: indent-line
 " ----------------------------------------------------------------- "
-let g:indentLine_noConcealCursor=""
+let g:indentLine_noConcealCursor = ""
 
 " ----------------------------------------------------------------- "
 " Plugin: ack.vim
@@ -260,15 +260,8 @@ endif
 " ----------------------------------------------------------------- "
 " Plugin: vim-airline
 " ----------------------------------------------------------------- "
-let g:airline_powerline_fonts=1
-let g:airline_theme='dark_minimal'
-
-" ----------------------------------------------------------------- "
-" Plugin: vim-markdown
-" ----------------------------------------------------------------- "
-let g:vim_markdown_folding_disabled=0
-let g:vim_markdown_folding_level=6
-let g:vim_markdown_new_list_item_indent=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'dark_minimal'
 
 " ----------------------------------------------------------------- "
 " Plugin: Goyo
@@ -303,7 +296,8 @@ let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELL
 " Plugin: yankring
 " ----------------------------------------------------------------- "
 nnoremap <silent> <F11> :YRShow<CR>\n
-
+let g:yankring_replace_n_pkey = '<m-p>'
+let g:yankring_replace_n_nkey = '<m-n>'
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-slime
