@@ -39,10 +39,12 @@ Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeSc
 Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
-Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
-"Plug 'garbas/vim-snipmate'                      " Code snippet generator
+"Plug 'vim-scripts/YankRing.vim'                " Yanking on steroid
+"Plug 'garbas/vim-snipmate'                     "
+"Plug 'MarcWeber/vim-addon-mw-utils'            " Vim-snipmate dependencies
+"Plug 'tomtom/tlib_vim'                         " Vim-snipmate dependencies
+"Plug 'honza/vim-snippets'                      " Vim-snipmate dependencies
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
-" Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
 
 function! BuildYCM(info)
@@ -175,6 +177,8 @@ set term=screen-256color
 
 " color scheme after installing vim-colorschemes
 colorscheme badwolf
+
+highlight Visual ctermbg=white ctermfg=black
 
 " config badwolf
 let g:badwolf_darkgutter = 1

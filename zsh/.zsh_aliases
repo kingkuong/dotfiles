@@ -22,6 +22,7 @@ function gcl() {
 function gck() {
     branch=$1
     git checkout -b $branch -t origin/$branch
+    git push --set-upstream origin $branch
 }
 
     # More colorful/ informative git log
@@ -33,7 +34,8 @@ alias dp='docker volume prune -f \
     && docker network prune -f \
     && docker container prune -f \
     && docker image prune -f'
-alias dc='docker-compose down && docker-compose up'
+alias dc='docker-compose'
+alias dcu='docker-compose down && docker-compose up'
 alias dcb='docker-compose down && docker-compose up --build'
 alias de='docker-compose exec'
 alias dr='docker-compose run'
