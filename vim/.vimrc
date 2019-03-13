@@ -39,12 +39,11 @@ Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeSc
 Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
-"Plug 'vim-scripts/YankRing.vim'                " Yanking on steroid
-"Plug 'garbas/vim-snipmate'                     "
-"Plug 'MarcWeber/vim-addon-mw-utils'            " Vim-snipmate dependencies
-"Plug 'tomtom/tlib_vim'                         " Vim-snipmate dependencies
-"Plug 'honza/vim-snippets'                      " Vim-snipmate dependencies
+Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
+Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
+"Plug 'garbas/vim-snipmate'                      " Code snippet generator
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
+" Plugins to checkout
 "Plug 'suan/vim-instant-markdown'
 
 function! BuildYCM(info)
@@ -178,8 +177,6 @@ set term=screen-256color
 " color scheme after installing vim-colorschemes
 colorscheme badwolf
 
-highlight Visual ctermbg=white ctermfg=black
-
 " config badwolf
 let g:badwolf_darkgutter = 1
 
@@ -258,7 +255,6 @@ let g:indentLine_noConcealCursor = ""
 " To use Ag instead
 if executable('ag')
     let g:ackprg = 'ag --vimgrep --smart-case'
-
 endif
 
 " ----------------------------------------------------------------- "
@@ -302,6 +298,13 @@ let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELL
 nnoremap <silent> <F11> :YRShow<CR>\n
 let g:yankring_replace_n_pkey = '<m-p>'
 let g:yankring_replace_n_nkey = '<m-n>'
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-slime
+" ----------------------------------------------------------------- "
+"let g:slime_target = "tmux" "using tmux instead of GNU screen
+"let g:slime_paste_file = "$HOME/.slime_paste"
+
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-slime
