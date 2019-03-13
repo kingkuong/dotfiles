@@ -22,10 +22,9 @@ function gcl() {
 function gck() {
     branch=$1
     git checkout -b $branch -t origin/$branch
-    git push --set-upstream origin $branch
 }
 
-    # More colorful/ informative git log
+# More colorful/ informative git log
 alias gl1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 
@@ -34,8 +33,7 @@ alias dp='docker volume prune -f \
     && docker network prune -f \
     && docker container prune -f \
     && docker image prune -f'
-alias dc='docker-compose'
-alias dcu='docker-compose down && docker-compose up'
+alias dc='docker-compose down && docker-compose up'
 alias dcb='docker-compose down && docker-compose up --build'
 alias de='docker-compose exec'
 alias dr='docker-compose run'
@@ -61,7 +59,9 @@ alias mt='MIX_ENV=test mix do compile --warning-as-errors, test'
 alias mtt='MIX_ENV=test mix do compile --warning-as-errors, test --trace'
 alias mat='for app in apps/**; do cd $app && MIX_ENV=test mix do compile --warning-as-errors, test; cd ../..; done'
 
-# FUNCTIONAL COMMANDS
+# Others
+alias wt='curl wttr.in/Toronto'
+
 ## Running command in a loop
     # Usage: 'loop-for times(int) command'
 function loop-for() {

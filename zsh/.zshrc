@@ -49,7 +49,9 @@ ZSH_THEME="af-magic"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+plugins=(git zsh-autosuggestions)
 
 # User configuration
 
@@ -74,15 +76,6 @@ export LANG=en_US.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # Enable Vim mode
 bindkey -v
 bindkey 'jk' vi-cmd-mode #bindkey jk to enter vim
@@ -105,6 +98,13 @@ setopt RM_STAR_WAIT
 
 eval $(thefuck --alias)
 eval $(pip completion --zsh)
+
+# #######################################
+# Plugins Config
+# #######################################
+
+# zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
 
 # #######################################
 # Environment Variables
