@@ -4,6 +4,7 @@
 alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias install='sudo apt-get update && sudo apt-get install -y'
 alias clean='sudo apt-get autoremove -y && sudo apt-get autoclean -y'
+alias battery='sudo tlp-stat -b -t'
 
 # -------------------------------------------------------------------
 # Functional Commands
