@@ -81,9 +81,10 @@ function kill-port()
 ## Loading alias file based on Distro
 base_name="$(uname -s)"
 case "${base_name}" in
-    Linux*) case "$(head -1 /etc/*-release)" in
+    Linux*)
+        source $HOME/.zsh_aliases.linux;
+        case "$(head -1 /etc/*-release)" in
                 *NAME=\"Arch*)      source $HOME/.zsh_aliases.arch;;
-                *)                  source $HOME/.zsh_aliases.linux;;
             esac;;
     Darwin*)    source $HOME/.zsh_aliases.osx;;
     *)          echo "unknown OS"
