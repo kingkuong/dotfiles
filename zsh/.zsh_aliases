@@ -31,11 +31,11 @@ alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 # Docker
 alias dp='docker system prune -f'
 alias dc='docker-compose'
-alias dcu='docker-compose down && docker-compose up --build'
-alias dcb='docker-compose down && docker-compose up --build'
-alias dce='docker-compose exec'
-alias dcd='docker-compose down'
-alias dcr='docker-compose run'
+alias du='docker-compose down && docker-compose up --build'
+alias db='docker-compose down && docker-compose up --build'
+alias de='docker-compose exec'
+alias dd='docker-compose down'
+alias dr='docker-compose run'
 
 # Ruby/Rails
 alias be="bundle exec"
