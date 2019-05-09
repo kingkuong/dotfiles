@@ -31,7 +31,7 @@ alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 # Docker
 alias dp='docker system prune -f'
 alias dc='docker-compose'
-alias du='docker-compose down && docker-compose up --build'
+alias du='docker-compose down && docker-compose up'
 alias db='docker-compose down && docker-compose up --build'
 alias de='docker-compose exec'
 alias dd='docker-compose down'
