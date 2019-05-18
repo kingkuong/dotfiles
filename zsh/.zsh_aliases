@@ -1,6 +1,5 @@
 # Vim
 alias v=vim
-
 # Tmux
 alias t=tmux
 
@@ -31,7 +30,7 @@ alias gl2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 # Docker
 alias dp='docker system prune -f'
 alias dc='docker-compose'
-alias dcu='docker-compose down && docker-compose up --build'
+alias dcu='docker-compose down && docker-compose up'
 alias dcb='docker-compose down && docker-compose up --build'
 alias dce='docker-compose exec'
 alias dcd='docker-compose down'
