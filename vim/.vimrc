@@ -76,13 +76,13 @@ set conceallevel=0           " no concealing
 set directory=.        " changed directory for swap files
 
 " Enable if have terminal with fast drawing
-set cursorcolumn        " vertical highlight
+"set cursorcolumn        " vertical highlight
 set cursorline          " horizontal highlight
 
-set ttyfast             " re-drawing instead of scrolling
-set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-set lazyredraw
-set ttimeoutlen=100
+"set ttyfast             " re-drawing instead of scrolling
+"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+"set lazyredraw
+"set ttimeoutlen=100
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -161,6 +161,14 @@ vnoremap SS :%s//&\r/g<CR>
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " USAGE:
 "  - \s
+"
+" -----------------------------------------------------------------
+" Aliases
+" -----------------------------------------------------------------
+:ca F find
+:ca WQ wq
+:ca W w
+:ca Q q
 
 " -----------------------------------------------------------------
 " Skeletons
