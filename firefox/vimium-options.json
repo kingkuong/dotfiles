@@ -13,7 +13,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "# Insert your preferred key mappings here.\nmap b Vomnibar.activateTabSelection\nmap n Vomnibar.activateBookmarksInNewTab\nmap t Vomnibar.activateInNewTab\nmap ' Marks.activateGotoMode",
+  "keyMappings": "# Insert your preferred key mappings here.\nmap b Vomnibar.activateBookmarksInNewTab\nmap t Vomnibar.activateInNewTab\nmap ' Marks.activateGotoMode",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "https://cdn.cuongtn.xyz/bg.html",
