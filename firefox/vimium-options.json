@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.63.3",
+  "settingsVersion": "1.64.6",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -16,7 +16,7 @@
   "keyMappings": "# Insert your preferred key mappings here.\nmap b Vomnibar.activateTabSelection\nmap n Vomnibar.activateBookmarksInNewTab\nmap t Vomnibar.activateInNewTab\nmap ' Marks.activateGotoMode",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
-  "newTabUrl": "https://d3ddu5cx7b9ajw.cloudfront.net/bg.html",
+  "newTabUrl": "https://cdn.cuongtn.xyz/bg.html",
   "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
   "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
   "regexFindMode": false,
