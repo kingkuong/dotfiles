@@ -4,13 +4,13 @@ alias v=vim
 alias t=tmux
 
 alias gl="git log --oneline --graph"
-alias gp="git push"
+alias gp="git push -u origin HEAD"
 alias ga="git add "
 alias gs="git status"
 alias gr="git reset"
 alias gd="git diff -w"
 alias gc="git commit"
-alias gpl="git pull"
+alias gpl="git pull origin HEAD"
 alias ginit="git init; git remote add origin git@github.com:cuongtranx/${PWD##*/}.git"
 
 function gcl() {
