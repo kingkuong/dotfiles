@@ -113,11 +113,11 @@ bindkey '^ ' autosuggest-accept
 export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # Android
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$HOME/Android/Sdk
-export PATH=$PATH:$HOME/Android/Sdk/tools
-export PATH=$PATH:$HOME/Android/Sdk/platform-tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+export ANDROID_HOME=/Development/android-sdk/
+export PATH=${PATH}:/Development/android-sdk/platform-tools:/Development/android-sdk/tools
 # AWS
 export PATH=$PATH:~/.local/bin
 # GO

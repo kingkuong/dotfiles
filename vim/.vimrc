@@ -201,7 +201,7 @@ let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeShowHidden = 1
 
 " NERDTree Ignore List
-let g:NERDTreeIgnore = ['.pyc$', '.ropeproject', '__pycache__']
+let g:NERDTreeIgnore = ['.pyc$', '.ropeproject', '__pycache__', '.swp$']
 
 " Toggle  NERDTree opening with working file's directory
 function! NERDTreeToggleInCurDir()
@@ -226,9 +226,12 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'Grey', 'none', 'grey', '#545153')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('py', 'Green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ts', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('html', 'White', 'none', 'white', '#ffffff')
+call NERDTreeHighlightFile('css', 'Green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('py', 'Yellow', 'none', 'yellow', '#ffdd55')
 
 " ----------------------------------------------------------------- "
 " Plugin: Emmet
@@ -289,10 +292,12 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_fixers = {
             \'python': ['autopep8'],
             \'javascript': ['prettier'],
+            \'typescript': ['prettier'],
             \}
 let g:ale_linters = {
             \'python': ['pylint'],
             \'javascript': ['eslint'],
+            \'typescript': ['tslint'],
             \}
 
 " ----------------------------------------------------------------- "
