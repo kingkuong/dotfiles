@@ -33,7 +33,7 @@ Plug 'valloric/MatchTagAlways',                 {'for': 'html'} " HTML tag highl
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
 Plug 'yggdroot/indentLine'                      " View indentation level
-Plug 'w0rp/ale'                                 " Vim 8's Async linter
+Plug 'dense-analysis/ale'                       " Vim 8's Async linter
 Plug 'leafgarland/typescript-vim',              {'for': ['ts', 'tsx'] } " TypeScript syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeScript DOM syntax highlighting
 Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
@@ -196,6 +196,7 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeNaturalSort = 1
 
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
@@ -221,17 +222,26 @@ endfunction
 map <C-n> :call NERDTreeToggleInCurDir()<CR>
 
 " Function to highlight different extensions
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+function! NERDTreeHighlightFile(extension, fg, bg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('json', 'Grey', 'none', 'grey', '#545153')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('ts', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('html', 'White', 'none', 'white', '#ffffff')
-call NERDTreeHighlightFile('css', 'Green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('py', 'Yellow', 'none', 'yellow', '#ffdd55')
+" Colors reference:
+" https://vignette.wikia.nocookie.net/vim/images/1/16/Xterm-color-table.png/revision/latest?cb=20110121055231
+call NERDTreeHighlightFile('json', 8, 'none')
+call NERDTreeHighlightFile('js', 9, 'none')
+
+"Typescript
+call NERDTreeHighlightFile('ts', 9, 'none')
+call NERDTreeHighlightFile('module.ts', 125, 'none')
+call NERDTreeHighlightFile('component.ts', 124, 'none')
+call NERDTreeHighlightFile('spec.ts', 127, 'none')
+
+call NERDTreeHighlightFile('html', 14, 'none')
+call NERDTreeHighlightFile('css', 10, 'none')
+call NERDTreeHighlightFile('py', 11, 'none')
+call NERDTreeHighlightFile('md', 21, 'none')
 
 " ----------------------------------------------------------------- "
 " Plugin: Emmet
@@ -269,10 +279,11 @@ if executable('ag')
 endif
 
 " ----------------------------------------------------------------- "
-" Plugin: vim-airline
+" Plugin: vim-airline + vim-airline-themes
 " ----------------------------------------------------------------- "
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark_minimal'
+"let g:airline_statusline_ontop = 1
 
 " ----------------------------------------------------------------- "
 " Plugin: Goyo
@@ -291,8 +302,12 @@ let g:ale_lint_on_insert_leave = 1
 " Ale requires these tools to be installed globally
 let g:ale_fixers = {
             \'python': ['autopep8'],
-            \'javascript': ['prettier'],
+            \'javascript': ['eslint', 'prettier'],
             \'typescript': ['prettier'],
+            \'json': ['prettier'],
+            \'html': ['prettier'],
+            \'css': ['prettier'],
+            \'scss': ['prettier'],
             \}
 let g:ale_linters = {
             \'python': ['pylint'],
@@ -311,13 +326,6 @@ let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELL
 nnoremap <silent> <F11> :YRShow<CR>\n
 let g:yankring_replace_n_pkey = '<m-p>'
 let g:yankring_replace_n_nkey = '<m-n>'
-
-" ----------------------------------------------------------------- "
-" Plugin: vim-slime
-" ----------------------------------------------------------------- "
-"let g:slime_target = "tmux" "using tmux instead of GNU screen
-"let g:slime_paste_file = "$HOME/.slime_paste"
-
 
 " ----------------------------------------------------------------- "
 " Plugin: vim-slime
