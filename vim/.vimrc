@@ -17,7 +17,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'akstrfn/vim-orgmode',                     {'for': 'org', 'branch': 'stopiter_fix'} " Orgmode's in Vim
 Plug 'junegunn/goyo.vim',                       {'on': 'Goyo'} " Distraction-free writing
 Plug 'majutsushi/tagbar'
-Plug 'mattn/emmet-vim',                         {'for': 'html'}
+Plug 'mattn/emmet-vim',                         {'for': ['css', 'scss', 'sass', 'html']}
 Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
 Plug 'mxw/vim-jsx',                             {'for': 'jsx'}
 Plug 'pangloss/vim-javascript',                 {'for': 'javascript'}
@@ -248,6 +248,7 @@ call NERDTreeHighlightFile('md', 21, 'none')
 " ----------------------------------------------------------------- "
 " enable emmet only for html, css
 let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key = ','
 autocmd FileType html,css EmmetInstall
 
 " ----------------------------------------------------------------- "
