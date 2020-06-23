@@ -52,7 +52,7 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-      !./install.py --clang-completer --tern-completer --js-completer
+      !./install.py --clangd-completer --ts-completer --cs-completer
   endif
 endfunction
 Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -79,8 +79,8 @@ set directory=.        " changed directory for swap files
 "set cursorcolumn        " vertical highlight
 set cursorline          " horizontal highlight
 
-"set ttyfast             " re-drawing instead of scrolling
-"set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
+set ttyfast             " re-drawing instead of scrolling
+set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
 "set lazyredraw
 "set ttimeoutlen=100
 
@@ -242,6 +242,13 @@ call NERDTreeHighlightFile('html', 14, 'none')
 call NERDTreeHighlightFile('css', 10, 'none')
 call NERDTreeHighlightFile('py', 11, 'none')
 call NERDTreeHighlightFile('md', 21, 'none')
+
+" ----------------------------------------------------------------- "
+" Plugin: YouCompleteMe
+" ----------------------------------------------------------------- "
+let g:ycm_collect_identifiers_from_tags_files = 1
+nnoremap <leader>gt :vsplit \| YcmCompleter GoToDefinition<CR>
+
 
 " ----------------------------------------------------------------- "
 " Plugin: Emmet
