@@ -40,7 +40,9 @@ Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeSc
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
 Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
-Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
+"Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy Search for files
+Plug 'junegunn/fzf.vim'                              " Fuzzy Search for files
 "Plug 'garbas/vim-snipmate'                      " Code snippet generator
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
 " Plugins to checkout
@@ -73,7 +75,7 @@ set showmode            " -- INSERT (appreciation)-- :)
 set mouse=a             " use the mouse
 set conceallevel=0           " no concealing
 
-set directory=.        " changed directory for swap files
+"set directory=.        " changed directory for swap files
 
 " Enable if have terminal with fast drawing
 "set cursorcolumn        " vertical highlight
@@ -81,8 +83,11 @@ set cursorline          " horizontal highlight
 
 set ttyfast             " re-drawing instead of scrolling
 set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
-"set lazyredraw
+set lazyredraw
 "set ttimeoutlen=100
+
+"set timeoutlen=1000
+"set ttimeoutlen=0
 
 set mousehide           " hide the mouse when typing
 set backspace=2         " backspace over indent, eol, and insert
@@ -166,6 +171,8 @@ vnoremap SS :%s//&\r/g<CR>
 " Aliases
 " -----------------------------------------------------------------
 :ca F find
+:ca FS Files
+:ca H help
 :ca WQ wq
 :ca W w
 :ca Q q
@@ -246,7 +253,6 @@ call NERDTreeHighlightFile('md', 21, 'none')
 " ----------------------------------------------------------------- "
 " Plugin: YouCompleteMe
 " ----------------------------------------------------------------- "
-let g:ycm_collect_identifiers_from_tags_files = 1
 nnoremap <leader>gt :vsplit \| YcmCompleter GoToDefinition<CR>
 
 
