@@ -164,8 +164,11 @@ vnoremap SS :%s//&\r/g<CR>
 
 " enable search and replace ALL words under cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-" USAGE:
-"  - \s
+" USAGE: \s
+"
+" enable search with Ag under cursor
+nnoremap <Leader>a :Ag <C-R><C-W><CR>
+" USAGE: \a
 "
 " -----------------------------------------------------------------
 " Aliases
