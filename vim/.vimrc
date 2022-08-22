@@ -204,7 +204,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeNaturalSort = 1
-
+let NERDTreeWinSize = 40
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
 
@@ -243,7 +243,10 @@ call NERDTreeHighlightFile('js', 9, 'none')
 call NERDTreeHighlightFile('ts', 9, 'none')
 call NERDTreeHighlightFile('module.ts', 125, 'none')
 call NERDTreeHighlightFile('component.ts', 124, 'none')
+call NERDTreeHighlightFile('component.tsx', 124, 'none')
 call NERDTreeHighlightFile('spec.ts', 127, 'none')
+call NERDTreeHighlightFile('spec.tsx', 127, 'none')
+call NERDTreeHighlightFile('stories.tsx', 128, 'none')
 
 call NERDTreeHighlightFile('html', 14, 'none')
 call NERDTreeHighlightFile('css', 10, 'none')
@@ -316,8 +319,10 @@ let g:ale_lint_on_insert_leave = 1
 " Ale requires these tools to be installed globally
 let g:ale_fixers = {
             \'python': ['autopep8'],
-            \'javascript': ['eslint', 'prettier'],
+            \'javascript': ['prettier'],
             \'typescript': ['prettier'],
+            \'typescriptreact': ['prettier'],
+            \'react': ['prettier'],
             \'json': ['prettier'],
             \'html': ['prettier'],
             \'css': ['prettier'],
@@ -327,6 +332,7 @@ let g:ale_linters = {
             \'python': ['pylint'],
             \'javascript': ['eslint'],
             \'typescript': ['tslint'],
+            \'tsx': ['prettier'],
             \}
 
 " ----------------------------------------------------------------- "
