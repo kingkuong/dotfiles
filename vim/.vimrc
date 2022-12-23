@@ -316,8 +316,10 @@ let g:ale_lint_on_insert_leave = 1
 " Ale requires these tools to be installed globally
 let g:ale_fixers = {
             \'python': ['autopep8'],
-            \'javascript': ['eslint', 'prettier'],
+            \'javascript': ['prettier'],
             \'typescript': ['prettier'],
+            \'typescriptreact': ['prettier'],
+            \'react': ['prettier'],
             \'json': ['prettier'],
             \'html': ['prettier'],
             \'css': ['prettier'],
@@ -327,6 +329,8 @@ let g:ale_linters = {
             \'python': ['pylint'],
             \'javascript': ['eslint'],
             \'typescript': ['tslint'],
+            \'typescriptreact': ['eslint'],
+            \'javascriptreact': ['eslint'],
             \}
 
 " ----------------------------------------------------------------- "
