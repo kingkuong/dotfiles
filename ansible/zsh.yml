@@ -1,0 +1,12 @@
+- name: Install zsh
+  apt: name=zsh
+  tags:
+    - zsh
+- name: Change Shell
+  shell: chsh -s `which zsh`
+- name: Install ohmyzsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+- name: Download dotfiles
+  shell: echo 'yo'
+- name: Install zsh-autosuggesstion
+  shell: echo 'install zshautosuggesstion'

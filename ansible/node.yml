@@ -1,0 +1,11 @@
+- name: Install Node
+  apt:
+    name: ['nodejs', 'npm']
+  tags:
+    - node
+- name: Install n
+  npm:
+    name: n
+    global: true
+- name: n 16
+  shell: n 16

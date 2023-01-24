@@ -1,0 +1,12 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update cache
+      apt: update
+      tags:
+        - node
+        - zsh
+  tasks:
+    includes: './zsh.yml'
+    includes: './node.yml'
+    includes: './vim.yml'
