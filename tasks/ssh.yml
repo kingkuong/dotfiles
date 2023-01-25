@@ -7,7 +7,6 @@
     - dotfiles
     - ssh
 - name: Install ssh key
-  become: true
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"
@@ -18,7 +17,7 @@
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'git@github.com:cuongtranx/dotfiles.git'
-    dest: "/usr/local/bin/dotfiles"
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
     recursive: yes
     update: yes
     accept_hostkey: yes

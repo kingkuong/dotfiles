@@ -3,11 +3,13 @@
   tags:
     - git
 - name: Copy .global.gitignore
-  shell: mv ~/dotfiles/git/.global.gitignore ~/.global.gitignore
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/git/.global.gitignore"
+    dest: "{{ lookup('env', 'HOME') }}/.global.gitignore"
   tags:
     - dotfiles
     - git
 - name: Config Git global.ignore
-  shell: git config --global core.excludesfile '~/.global.gitignore'
+  shell: git config --global core.excludesfile '/home/docker/.global.gitignore'
   tags:
     - git

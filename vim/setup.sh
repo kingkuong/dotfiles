@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd ~/vim
 
-sudo ./configure --with-features=huge \
+./configure --with-features=huge \
     --enable-multibyte \
     --enable-rubyinterp=yes \
     --enable-python3interp=yes \
@@ -12,4 +12,4 @@ sudo ./configure --with-features=huge \
     --enable-cscope \
     --prefix=/usr/local
 
-sudo make install
+make install

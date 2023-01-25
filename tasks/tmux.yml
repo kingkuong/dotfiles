@@ -2,8 +2,10 @@
   apt: name=tmux
   tags:
     - tmux
-- name: Copy .tmux.conf
-  shell: mv ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
+- name: Copy .tmux.config
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/tmux/.tmux.conf"
+    dest: "{{ lookup('env', 'HOME') }}/.vimrc"
   tags:
     - dotfiles
     - tmux
