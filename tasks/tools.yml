@@ -1,0 +1,7 @@
+- name:
+  become: true
+  apt:
+    name: [silversearcher-ag]
+  tags:
+    - software
+

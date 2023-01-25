@@ -1,0 +1,30 @@
+- name: Install zsh
+  apt: name=zsh
+  tags:
+    - zsh
+- name: Change Shell
+  become: true
+  shell: chsh -s `which zsh`
+  tags:
+    - zsh
+- name: Install ohmyzsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  tags:
+    - zsh
+- name: Install zsh-autosuggesstion
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: master
+  tags:
+    - zsh
+- name: Copy .zshrc
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/zsh/.zshrc"
+    dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+  tags:
+    - dotfiles
+    - zsh

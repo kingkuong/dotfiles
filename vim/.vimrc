@@ -164,8 +164,11 @@ vnoremap SS :%s//&\r/g<CR>
 
 " enable search and replace ALL words under cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-" USAGE:
-"  - \s
+" USAGE: \s
+"
+" enable search with Ag under cursor
+nnoremap <Leader>a :Ag <C-R><C-W><CR>
+" USAGE: \a
 "
 " -----------------------------------------------------------------
 " Aliases
@@ -173,9 +176,13 @@ vnoremap SS :%s//&\r/g<CR>
 :ca F find
 :ca FS Files
 :ca H help
+" common mistakes :)
 :ca WQ wq
+:ca Wq wq
 :ca W w
 :ca Q q
+:ca Qa qa
+:ca QA qa
 
 " -----------------------------------------------------------------
 " Skeletons
@@ -204,7 +211,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeNaturalSort = 1
-
+let NERDTreeWinSize = 40
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
 
@@ -243,7 +250,10 @@ call NERDTreeHighlightFile('js', 9, 'none')
 call NERDTreeHighlightFile('ts', 9, 'none')
 call NERDTreeHighlightFile('module.ts', 125, 'none')
 call NERDTreeHighlightFile('component.ts', 124, 'none')
+call NERDTreeHighlightFile('component.tsx', 124, 'none')
 call NERDTreeHighlightFile('spec.ts', 127, 'none')
+call NERDTreeHighlightFile('spec.tsx', 127, 'none')
+call NERDTreeHighlightFile('stories.tsx', 128, 'none')
 
 call NERDTreeHighlightFile('html', 14, 'none')
 call NERDTreeHighlightFile('css', 10, 'none')
