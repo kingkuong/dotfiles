@@ -1,10 +1,27 @@
 - name: Install zsh
   apt: name=zsh
+  tags:
+    - zsh
 - name: Change Shell
   shell: chsh -s `which zsh`
+  tags:
+    - zsh
 - name: Install ohmyzsh
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-- name: Download dotfiles
-  shell: echo 'yo'
+  tags:
+    - zsh
+- name: Copy .zshrc
+  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/zsh/.zshrc {{ lookup('env', 'HOME')}}/.zshrc
+  tags:
+    - dotfiles
+    - zsh
+- name: Source .zshrc
+  shell: zsh
+  tags:
+    - dotfiles
+    - zsh
 - name: Install zsh-autosuggesstion
-  shell: echo 'install zshautosuggesstion'
+  shell: echo "zsh"
+  tags:
+    - zsh
+

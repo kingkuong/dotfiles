@@ -1,0 +1,27 @@
+- name: Ensure .ssh directory exists
+  become_user: root
+  file:
+    dest: "{{ dest_key | dirname }}"
+    mode: 0700
+    state: directory
+  tags:
+    - dotfiles
+    - ssh
+- name: Install ssh key
+  copy:
+    src: "{{ source_key }}"
+    dest: "{{ dest_key }}"
+    mode: 0600
+  tags:
+    - dotfiles
+    - ssh
+- name: Cloning .dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:cuongtranx/dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/dotfiles"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: master
+  tags:
+    - dotfiles

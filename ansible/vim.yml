@@ -1,4 +1,7 @@
-- name: Install Vim Dependencies
-  shell: echo 'Install Vim dependencies'
+- name: Copy .vimrc
+  shell: mv "{{ lookup('env', 'HOME')}}/dotfiles/vim/.vimrc {{ lookup('env', 'HOME')}}/.vimrc"
+  tags:
+    - dotfiles
+    - vim
 - name: Compile Vim
   shell: echo 'Compile Vim'
