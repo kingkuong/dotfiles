@@ -2,11 +2,9 @@
   become: true
   pre_tasks:
     - name: Update cache
-      apt: update
-      tags:
-        - node
-        - zsh
+      apt:
+        update_cache: true
   tasks:
-    includes: './zsh.yml'
-    includes: './node.yml'
-    includes: './vim.yml'
+    - include: ansible/zsh.yml
+    - include: ansible/node.yml
+    - include: ansible/vim.yml

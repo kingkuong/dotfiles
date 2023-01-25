@@ -1,7 +1,5 @@
 - name: Install zsh
   apt: name=zsh
-  tags:
-    - zsh
 - name: Change Shell
   shell: chsh -s `which zsh`
 - name: Install ohmyzsh
