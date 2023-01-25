@@ -23,7 +23,7 @@
     - zsh
 - name: Copy .zshrc
   copy:
-    src: "{{ lookup('env', 'HOME') }}/dotfiles/vim/.zsh*"
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/zsh/.zsh*"
     dest: "{{ lookup('env', 'HOME') }}"
   tags:
     - dotfiles
