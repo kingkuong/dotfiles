@@ -176,9 +176,13 @@ nnoremap <Leader>a :Ag <C-R><C-W><CR>
 :ca F find
 :ca FS Files
 :ca H help
+" common mistakes :)
 :ca WQ wq
+:ca Wq wq
 :ca W w
 :ca Q q
+:ca Qa qa
+:ca QA qa
 
 " -----------------------------------------------------------------
 " Skeletons
