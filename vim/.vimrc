@@ -335,7 +335,8 @@ let g:ale_linters = {
             \'python': ['pylint'],
             \'javascript': ['eslint'],
             \'typescript': ['tslint'],
-            \'tsx': ['prettier'],
+            \'typescriptreact': ['eslint'],
+            \'javascriptreact': ['eslint'],
             \}
 
 " ----------------------------------------------------------------- "
