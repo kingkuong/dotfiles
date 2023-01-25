@@ -15,3 +15,4 @@
     - include: tasks/python.yml
     - include: tasks/vim.yml
     - include: tasks/tmux.yml
+    - include: tasks/tools.yml

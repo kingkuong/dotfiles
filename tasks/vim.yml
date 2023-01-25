@@ -5,7 +5,7 @@
   tags:
     - dotfiles
     - vim
-- name: Install Vim depedencies
+- name: Install Vim dependencies
   become: true
   apt:
     name: [git ,libatk1.0-dev ,libcairo2-dev ,libgtk2.0-dev ,liblua5.1-0-dev ,libncurses5-dev ,libperl-dev ,libx11-dev ,libxpm-dev ,libxt-dev ,lua5.1 ,python3-dev ,ruby-dev ,clang ,make, cmake]
