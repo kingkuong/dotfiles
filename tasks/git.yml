@@ -3,7 +3,7 @@
   tags:
     - git
 - name: Copy .global.gitignore
-  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/git/.global.gitignore {{ lookup('env', 'HOME')}}/.global.gitignore
+  shell: mv ~/dotfiles/git/.global.gitignore ~/.global.gitignore
   tags:
     - dotfiles
     - git

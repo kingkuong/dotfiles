@@ -10,15 +10,9 @@
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   tags:
     - zsh
-- name: Copy .zshrc
-  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/zsh/.zshrc {{ lookup('env', 'HOME')}}/.zshrc
-  tags:
-    - dotfiles
-    - zsh
 - name: Install zsh-autosuggesstion
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags:
     - zsh
-

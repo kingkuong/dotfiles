@@ -1,16 +1,17 @@
 - hosts: localhost
-  become: true
   pre_tasks:
     - name: Update cache
+      become: true
       apt:
         update_cache: true
   vars:
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   tasks:
-    #- include: ansible/ssh.yml
-    #- include: ansible/zsh.yml
-      #- include: ansible/git.yml
-      #- include: ansible/node.yml
-    - include: ansible/python.yml
-    - include: ansible/vim.yml
+    - include: tasks/ssh.yml
+    - include: tasks/zsh.yml
+      #- include: tasks/git.yml
+      #- include: tasks/node.yml
+      #- include: tasks/python.yml
+      #- include: tasks/vim.yml
+      #- include: tasks/tmux.yml

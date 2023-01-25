@@ -3,7 +3,7 @@
   tags:
     - tmux
 - name: Copy .tmux.conf
-  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/tmux/.tmux.conf {{ lookup('env', 'HOME')}}/.tmux.conf
+  shell: mv ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
   tags:
     - dotfiles
     - tmux

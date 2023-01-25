@@ -1,8 +1,8 @@
-#- name: Copy .vimrc
-#  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/vim/.vimrc {{ lookup('env', 'HOME')}}/.vimrc
-#  tags:
-#    - dotfiles
-#    - vim
+- name: Copy .vimrc
+  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/vim/.vimrc {{ lookup('env', 'HOME')}}/.vimrc
+  tags:
+    - dotfiles
+    - vim
 - name: Install Vim depedencies
   become: true
   apt:
@@ -15,7 +15,7 @@
     dest: "~/vim"
   tags:
     - vim
-- name: Configure Vim
+- name: Install Vim
   become: true
   shell: ./vim/setup.sh
   tags:

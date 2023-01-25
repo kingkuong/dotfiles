@@ -1,1 +1,1 @@
-Run `./setup.sh`
+Run `sudo ./setup.sh`
