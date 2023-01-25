@@ -15,5 +15,9 @@
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/plugins/zsh-autosuggestions"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: master
   tags:
     - zsh

@@ -1,4 +1,5 @@
 - name: Install Tmux
+  become: true
   apt: name=tmux
   tags:
     - tmux
