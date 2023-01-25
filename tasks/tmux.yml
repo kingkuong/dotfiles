@@ -6,7 +6,7 @@
 - name: Copy .tmux.config
   copy:
     src: "{{ lookup('env', 'HOME') }}/dotfiles/tmux/.tmux.conf"
-    dest: "{{ lookup('env', 'HOME') }}/.vimrc"
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
   tags:
     - dotfiles
     - tmux
