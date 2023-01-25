@@ -10,5 +10,6 @@
   tasks:
     - include: ansible/ssh.yml
     - include: ansible/zsh.yml
-    - include: ansible/node.yml
+      #- include: ansible/node.yml
+    - include: ansible/python.yml
     - include: ansible/vim.yml

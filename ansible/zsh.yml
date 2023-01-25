@@ -15,13 +15,10 @@
   tags:
     - dotfiles
     - zsh
-- name: Source .zshrc
-  shell: zsh
-  tags:
-    - dotfiles
-    - zsh
 - name: Install zsh-autosuggesstion
-  shell: echo "zsh"
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
   tags:
     - zsh
 

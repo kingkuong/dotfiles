@@ -1,7 +1,21 @@
 - name: Copy .vimrc
-  shell: mv "{{ lookup('env', 'HOME')}}/dotfiles/vim/.vimrc {{ lookup('env', 'HOME')}}/.vimrc"
+  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/vim/.vimrc {{ lookup('env', 'HOME')}}/.vimrc
   tags:
     - dotfiles
     - vim
+- name: Install Vim depedencies
+  become: true
+  apt:
+    name: [git ,libatk1.0-dev ,libcairo2-dev ,libgtk2.0-dev ,liblua5.1-0-dev ,libncurses5-dev ,libperl-dev ,libx11-dev ,libxpm-dev ,libxt-dev ,lua5.1 ,python3-dev ,ruby-dev ,clang ,make]
+  tags:
+    - vim
+- name: Clone vim
+  ansible.builtin.git:
+    repo: https://github.com/vim/vim.git
+    dest: "~/vim"
+  tags:
+    - vim
 - name: Compile Vim
   shell: echo 'Compile Vim'
+  tags:
+    - vim

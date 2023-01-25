@@ -1,5 +1,1 @@
-# CUONGTN's configuration files for:
-
-- vim
-- zsh
-- git
+Run `./setup.sh`

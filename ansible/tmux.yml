@@ -1,4 +1,10 @@
 - name: Install Tmux
-  shell: echo 'Config git'
-- name: Config Tmux
-  shell: echo 'Config global.ignore'
+  apt: name=tmux
+  tags:
+    - tmux
+- name: Copy .tmux.conf
+  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/tmux/.tmux.conf {{ lookup('env', 'HOME')}}/.tmux.conf
+  tags:
+    - dotfiles
+    - tmux
+
