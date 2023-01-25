@@ -1,0 +1,4 @@
+- name: Install Tmux
+  shell: echo 'Config git'
+- name: Config Tmux
+  shell: echo 'Config global.ignore'

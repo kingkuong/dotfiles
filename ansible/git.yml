@@ -1,0 +1,4 @@
+- name: Config Git
+  shell: echo 'Config git'
+- name: Config Git global.ignore
+  shell: echo 'Config global.ignore'
