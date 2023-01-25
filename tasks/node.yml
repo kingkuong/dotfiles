@@ -1,10 +1,12 @@
 - name: Install node
+  become: true
   apt:
     name: [nodejs, npm]
     state: present
   tags:
     - node
 - name: Install n
+  become: true
   npm:
     name: n
     global: true
