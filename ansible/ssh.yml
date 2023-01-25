@@ -1,5 +1,5 @@
 - name: Ensure .ssh directory exists
-  become_user: root
+  become_user: cuong
   file:
     dest: "{{ dest_key | dirname }}"
     mode: 0700
@@ -8,6 +8,7 @@
     - dotfiles
     - ssh
 - name: Install ssh key
+  become_user: cuong
   copy:
     src: "{{ source_key }}"
     dest: "{{ dest_key }}"

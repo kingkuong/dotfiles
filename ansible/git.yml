@@ -1,4 +1,13 @@
-- name: Config Git
-  shell: echo 'Config git'
+- name: Install git
+  apt: name=git
+  tags:
+    - git
+- name: Copy .global.gitignore
+  shell: mv {{ lookup('env', 'HOME')}}/dotfiles/git/.global.gitignore {{ lookup('env', 'HOME')}}/.global.gitignore
+  tags:
+    - dotfiles
+    - git
 - name: Config Git global.ignore
-  shell: echo 'Config global.ignore'
+  shell: git config --global core.excludesfile '~/.global.gitignore'
+  tags:
+    - git

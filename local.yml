@@ -8,8 +8,9 @@
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   tasks:
-    - include: ansible/ssh.yml
-    - include: ansible/zsh.yml
+    #- include: ansible/ssh.yml
+    #- include: ansible/zsh.yml
+      #- include: ansible/git.yml
       #- include: ansible/node.yml
     - include: ansible/python.yml
     - include: ansible/vim.yml
