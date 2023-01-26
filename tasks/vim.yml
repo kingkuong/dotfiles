@@ -15,17 +15,17 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/vim/vim.git
-    dest: "{{ lookup('env', 'HOME') }}/vim"
+    dest: "/tmp/vim"
   tags:
     - vim
 - name: Copy Installation file
   copy:
     src: "{{ lookup('env', 'HOME') }}/dotfiles/vim/setup.sh"
-    dest: "/usr/local/bin/"
+    dest: "/tmp/setup.sh"
   tags:
     - vim
 - name: Install Vim
   become: true
-  shell: /usrc/local/bin/setup.sh
+  shell: /tmp/setup.sh
   tags:
     - vim
