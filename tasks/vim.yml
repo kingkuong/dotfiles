@@ -24,6 +24,11 @@
     dest: "/tmp/"
   tags:
     - vim
+- name: Change Installation permission
+  become: true
+  shell: chmod 755 /tmp/setup.sh
+  tags:
+    - vim
 - name: Install Vim
   become: true
   shell: /tmp/setup.sh
