@@ -13,6 +13,7 @@
   tags:
     - node
 - name: n 16
+  become: true
   shell: n 16
   tags:
     - node
