@@ -11,6 +11,7 @@ cd ~/setup
 
 git clone https://github.com/cuongtranx/dotfiles.git
 
+cd dotfiles
 
 ./setup.sh
 ```
