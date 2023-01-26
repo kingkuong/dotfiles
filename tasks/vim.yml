@@ -15,11 +15,22 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/vim/vim.git
-    dest: "{{ lookup('env', 'HOME') }}/vim"
+    dest: "/tmp/vim"
   tags:
-    - vi
+    - vim
+- name: Copy Installation file
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/vim/setup.sh"
+    dest: "/tmp/"
+  tags:
+    - vim
+- name: Change Installation permission
+  become: true
+  shell: chmod 755 /tmp/setup.sh
+  tags:
+    - vim
 - name: Install Vim
   become: true
-  shell: ./vim/setup.sh
+  shell: /tmp/setup.sh
   tags:
     - vim

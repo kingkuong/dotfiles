@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd ~/vim
+cd /tmp/vim
 
 ./configure --with-features=huge \
     --enable-multibyte \
