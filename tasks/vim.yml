@@ -21,7 +21,7 @@
 - name: Copy Installation file
   copy:
     src: "{{ lookup('env', 'HOME') }}/dotfiles/vim/setup.sh"
-    dest: "/usr/local/bin"
+    dest: "/usr/local/bin/"
   tags:
     - vim
 - name: Install Vim
