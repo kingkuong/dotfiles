@@ -20,6 +20,6 @@
     - vi
 - name: Install Vim
   become: true
-  shell: {{ lookup('env', 'HOME') }}/dotfiles/vim/setup.sh
+  shell: ./vim/setup.sh
   tags:
     - vim
