@@ -13,7 +13,7 @@
     - vim
 - name: Clone vim
   become: true
-  ansible.builtin.git:
+  git:
     repo: https://github.com/vim/vim.git
     dest: "/tmp/vim"
   tags:
