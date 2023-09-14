@@ -12,8 +12,13 @@
     global: true
   tags:
     - node
-- name: n 16
+- name: n 18
   become: true
-  shell: n 16
+  shell: n 18
+  tags:
+    - node
+- name: typescript
+  become: true
+  shell: npm install -g typescript
   tags:
     - node
