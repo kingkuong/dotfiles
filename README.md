@@ -1,6 +1,6 @@
 # Setup
 
-On a New Ubuntu machine, run:
+## Ubuntu
 
 ```
 sudo apt update
@@ -17,6 +17,24 @@ cd dotfiles
 
 ./setup.sh
 ```
+
+## Arch
+
+TBD
+
+## OSX
+
+TBD
+
+## Common operations
+
+* To run tasks with tag:
+
+`ansible-playbook ./local.yml --tags git`
+
+Tips: provide one time tag to run command one time
+
+
 
 # Testing
 

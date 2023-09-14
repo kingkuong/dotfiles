@@ -9,7 +9,12 @@
   tags:
     - dotfiles
     - git
-- name: Config Git global.ignore
-  shell: git config --global core.excludesfile '/home/docker/.global.gitignore'
+- name: Config Git .global.gitignore
+  shell: git config --global core.excludesfile "$HOME/.global.gitignore"
   tags:
     - git
+- name: Config Git
+  shell: git config --global user.name "Cuong Tran"
+  tags:
+    - git
+

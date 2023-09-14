@@ -29,3 +29,11 @@
   tags:
     - dotfiles
     - zsh
+- name: Copy .zsh_aliases
+  copy:
+    src: "{{ lookup('env', 'HOME') }}/dotfiles/zsh/.zsh_aliases"
+    dest: "{{ lookup('env', 'HOME') }}/.zsh_aliases"
+  tags:
+    - zsh
+    - dotfiles
+
