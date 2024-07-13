@@ -22,6 +22,7 @@
     version: master
   tags:
     - zsh
+    - zsh-autosuggesstion
 - name: Copy .zshrc
   copy:
     src: "{{ lookup('env', 'HOME') }}/dotfiles/zsh/.zshrc"
