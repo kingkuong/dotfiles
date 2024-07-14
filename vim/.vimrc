@@ -153,6 +153,10 @@ vnoremap SS :%s//&\r/g<CR>
 " USAGE:
 "  - \s
 "
+" enable search with Ag under cursor
+nnoremap <Leader>a :Ag <C-R><C-W><CR>
+" USAGE: \a
+"
 " -----------------------------------------------------------------
 " Aliases
 " -----------------------------------------------------------------
@@ -325,11 +329,6 @@ let g:ale_linters = {
             \}
 
 " ----------------------------------------------------------------- "
-" Plugin: vim-orgmode
-" ----------------------------------------------------------------- "
-let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELLED']
-
-" ----------------------------------------------------------------- "
 " Plugin: yankring
 " ----------------------------------------------------------------- "
 nnoremap <silent> <F11> :YRShow<CR>\n
@@ -345,7 +344,7 @@ let g:yankring_replace_n_nkey = '<m-n>'
 " ----------------------------------------------------------------- "
 " Plugin: vim-lsp
 " ----------------------------------------------------------------- "
-"let g:lsp_diagnostics_enabled = 0 "ALE will run dianostic instead
+nnoremap <leader>gt :vsplit \| :LspDefinition<CR>
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
