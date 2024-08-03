@@ -1,6 +1,4 @@
 " ----------------------------------------------------------------- "
-" Plugins installed with Plug
-" ----------------------------------------------------------------- "
 " Automatic installation of Vim-Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -11,20 +9,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugin list
-Plug 'elixir-lang/vim-elixir',                  {'for': 'elixir'}
-Plug 'elzr/vim-json',                           {'for': 'json'} " Syntax highlighting for Json & JsonP
 Plug 'flazz/vim-colorschemes'
-Plug 'akstrfn/vim-orgmode',                     {'for': 'org', 'branch': 'stopiter_fix'} " Orgmode's in Vim
 Plug 'junegunn/goyo.vim',                       {'on': 'Goyo'} " Distraction-free writing
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim',                         {'for': ['css', 'scss', 'sass', 'html']}
 Plug 'mileszs/ack.vim'                          " Ack searcher, require to have Ag installed if want to search using Ag
-Plug 'mxw/vim-jsx',                             {'for': 'jsx'}
-Plug 'pangloss/vim-javascript',                 {'for': 'javascript'}
-"Plug 'plasticboy/vim-markdown',                 {'for': 'markdown'}
-Plug 'posva/vim-vue'
 Plug 'scrooloose/nerdtree',                     {'on': ['NERDTreeToggle', 'NERDTreeClose', 'NERDTreeFind']}
-Plug 'slashmili/alchemist.vim'                  " Elixir integration
 Plug 'tpope/vim-fugitive'                       " Git wrapper
 Plug 'tpope/vim-sensible'                       " Agreeable vim configs
 Plug 'tpope/vim-speeddating'                    " Date objects
@@ -33,31 +23,28 @@ Plug 'valloric/MatchTagAlways',                 {'for': 'html'} " HTML tag highl
 Plug 'vim-airline/vim-airline'                  " Light & simple status bar
 Plug 'vim-airline/vim-airline-themes'           " Status Bar theme
 Plug 'yggdroot/indentLine'                      " View indentation level
-Plug 'dense-analysis/ale'                       " Vim 8's Async linter
-Plug 'leafgarland/typescript-vim',              {'for': ['ts', 'tsx'] } " TypeScript syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim',            {'for': ['ts', 'tsx'] } " TypeScript DOM syntax highlighting
-Plug 'Quramy/tsuquyomi',                        {'for': ['ts', 'tsx'] } " TypeScript tools
-Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'scrooloose/nerdcommenter'                 " Automate commenting usage: \cc
 Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
-"Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
+Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy Search for files
 Plug 'junegunn/fzf.vim'                              " Fuzzy Search for files
-"Plug 'garbas/vim-snipmate'                      " Code snippet generator
+"Plug 'garbas/vim-snipmate'                     " Code snippet generator
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
-" Plugins to checkout
-"Plug 'suan/vim-instant-markdown'
-
-function! BuildYCM(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-      !./install.py --clangd-completer --ts-completer --cs-completer
-  endif
-endfunction
-Plug 'valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+"Plugins to checkout
+"
+"
+"
+" LSP/Linting plugins
+" The method for linting/lsp I'm currently using is
+"   - Use `vim-lsp` to handle the Language Server (add/remove) & dianostic
+"   - Use `asyncomplete` to handle auto completion
+"   - Use `ale` as the client to vim-lsp to handle errors
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'dense-analysis/ale'                       " Async linter
+Plug 'rhysd/vim-lsp-ale'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 call plug#end()
 " ----------------------------------------------------------------- "
@@ -80,7 +67,6 @@ set conceallevel=0           " no concealing
 " Enable if have terminal with fast drawing
 "set cursorcolumn        " vertical highlight
 set cursorline          " horizontal highlight
-
 set ttyfast             " re-drawing instead of scrolling
 set ttyscroll           " re-drawing instead of scrolling when scrolling 3 lines consecutively
 set lazyredraw
@@ -164,7 +150,8 @@ vnoremap SS :%s//&\r/g<CR>
 
 " enable search and replace ALL words under cursor
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-" USAGE: \s
+" USAGE:
+"  - \s
 "
 " enable search with Ag under cursor
 nnoremap <Leader>a :Ag <C-R><C-W><CR>
@@ -211,7 +198,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeNaturalSort = 1
-let NERDTreeWinSize = 40
+
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
 
@@ -254,16 +241,10 @@ call NERDTreeHighlightFile('component.tsx', 124, 'none')
 call NERDTreeHighlightFile('spec.ts', 127, 'none')
 call NERDTreeHighlightFile('spec.tsx', 127, 'none')
 call NERDTreeHighlightFile('stories.tsx', 128, 'none')
-
 call NERDTreeHighlightFile('html', 14, 'none')
 call NERDTreeHighlightFile('css', 10, 'none')
 call NERDTreeHighlightFile('py', 11, 'none')
 call NERDTreeHighlightFile('md', 21, 'none')
-
-" ----------------------------------------------------------------- "
-" Plugin: YouCompleteMe
-" ----------------------------------------------------------------- "
-nnoremap <leader>gt :vsplit \| YcmCompleter GoToDefinition<CR>
 
 
 " ----------------------------------------------------------------- "
@@ -286,10 +267,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 nmap <F6> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------- "
-" Plugin: vim-json
-" ----------------------------------------------------------------- "
-
-" ----------------------------------------------------------------- "
 " Plugin: indent-line
 " ----------------------------------------------------------------- "
 let g:indentLine_noConcealCursor = ""
@@ -307,7 +284,6 @@ endif
 " ----------------------------------------------------------------- "
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'dark_minimal'
-"let g:airline_statusline_ontop = 1
 
 " ----------------------------------------------------------------- "
 " Plugin: Goyo
@@ -321,8 +297,16 @@ let g:goyo_height = 95
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 500
+let g:ale_lint_delay = 250
 let g:ale_lint_on_insert_leave = 1
+let g:ale_virtualtext_cursor = 'current'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" use vim-airline to handle displaying in status line
+let g:airline#extensions#ale#enabled = 1
 " Ale requires these tools to be installed globally
 let g:ale_fixers = {
             \'python': ['autopep8'],
@@ -341,12 +325,8 @@ let g:ale_linters = {
             \'typescript': ['tslint'],
             \'typescriptreact': ['eslint'],
             \'javascriptreact': ['eslint'],
+            \'go': ['vim-lsp', 'golint'],
             \}
-
-" ----------------------------------------------------------------- "
-" Plugin: vim-orgmode
-" ----------------------------------------------------------------- "
-let g:org_todo_keywords = ['TODO', 'DOING', '|', 'UNCOMPLETED', 'DONE', 'CANCELLED']
 
 " ----------------------------------------------------------------- "
 " Plugin: yankring
@@ -360,6 +340,11 @@ let g:yankring_replace_n_nkey = '<m-n>'
 " ----------------------------------------------------------------- "
 "let g:slime_target = "tmux" "using tmux instead of GNU screen
 "let g:slime_paste_file = "$HOME/.slime_paste"
+
+" ----------------------------------------------------------------- "
+" Plugin: vim-lsp
+" ----------------------------------------------------------------- "
+nnoremap <leader>gt :vsplit \| :LspDefinition<CR>
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
