@@ -8,11 +8,11 @@
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   tasks:
-    - include: tasks/ssh.yml
-    - include: tasks/zsh.yml
-    - include: tasks/git.yml
-    - include: tasks/node.yml
-    - include: tasks/python.yml
-    - include: tasks/vim.yml
-    - include: tasks/tmux.yml
-    - include: tasks/tools.yml
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/node.yml
+    - import_tasks: tasks/python.yml
+    - import_tasks: tasks/vim.yml
+    - import_tasks: tasks/tmux.yml
+    - import_tasks: tasks/tools.yml

@@ -13,3 +13,11 @@
   shell: git config --global core.excludesfile '/home/docker/.global.gitignore'
   tags:
     - git
+- name: Config Git global.ignore
+  shell: git config --global user.name 'Cuong Tran'
+  tags:
+    - git
+- name: Config Git global.ignore
+  shell: git config --global user.email 'dev@cuongtn.com'
+  tags:
+    - git
