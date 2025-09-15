@@ -28,6 +28,7 @@ Plug 'vim-scripts/YankRing.vim'                 " Yanking on steroid
 Plug 'ctrlpvim/ctrlp.vim'                       " Fuzzy Search for files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy Search for files
 Plug 'junegunn/fzf.vim'                              " Fuzzy Search for files
+Plug 'github/copilot.vim'                       "Github copilot, do :Copilot setup
 "Plug 'garbas/vim-snipmate'                     " Code snippet generator
 "Plug 'jpalardy/vim-slime'                      " Running REPL in Vim
 "Plugins to checkout
@@ -36,15 +37,18 @@ Plug 'junegunn/fzf.vim'                              " Fuzzy Search for files
 "
 " LSP/Linting plugins
 " The method for linting/lsp I'm currently using is
-"   - Use `vim-lsp` to handle the Language Server (add/remove) & dianostic
-"   - Use `asyncomplete` to handle auto completion
-"   - Use `ale` as the client to vim-lsp to handle errors
+"   - Use `vim-lsp` to handle the Language Server Protocal, dianostic,
+"   GoToDefinition, References, etc.
+"       - Use `vim-lsp-setting` to install LSP
+"       - Run :LspInstallServer on the opened file to install language server
+"   - `ale` as the client to vim-lsp, doing linting, displaying errors & fixing
+"   - `asyncomplete` to handle auto completion
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'dense-analysis/ale'                       " Async linter
-Plug 'rhysd/vim-lsp-ale'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'dense-analysis/ale'
+Plug 'rhysd/vim-lsp-ale'
 
 call plug#end()
 " ----------------------------------------------------------------- "
@@ -198,6 +202,9 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeNaturalSort = 1
+let g:NERDTreeNaturalSort = 1
+let g:NERDTreeAutoCenter = 1
+let g:NERDTreeWinSize = 45
 
 "Use 'I' to toggle hidden files"
 let g:NERDTreeShowHidden = 1
@@ -292,7 +299,7 @@ let g:goyo_width = 100
 let g:goyo_height = 95
 
 " ----------------------------------------------------------------- "
-" Plugin: ale
+" Plugin: vim-lsp/ale/asynccomplete
 " ----------------------------------------------------------------- "
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
@@ -302,13 +309,13 @@ let g:ale_lint_on_insert_leave = 1
 let g:ale_virtualtext_cursor = 'current'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " use vim-airline to handle displaying in status line
 let g:airline#extensions#ale#enabled = 1
 " Ale requires these tools to be installed globally
 let g:ale_fixers = {
+            \'*': ['remove_trailing_lines', 'trim_whitespace'],
             \'python': ['autopep8'],
             \'javascript': ['prettier'],
             \'typescript': ['prettier'],
@@ -318,15 +325,21 @@ let g:ale_fixers = {
             \'html': ['prettier'],
             \'css': ['prettier'],
             \'scss': ['prettier'],
+            \'go': ['gofmt'],
             \}
-let g:ale_linters = {
-            \'python': ['pylint'],
-            \'javascript': ['eslint'],
-            \'typescript': ['tslint'],
-            \'typescriptreact': ['eslint'],
-            \'javascriptreact': ['eslint'],
-            \'go': ['vim-lsp', 'golint'],
-            \}
+
+let g:lsp_settings_filetype_html = ['html-languageserver', 'angular-language-server', 'tailwindcss-intellisense']
+
+nnoremap <leader>gt :vsplit \| :LspDefinition<CR>
+nnoremap <leader>fr :LspReferences<CR>
+nnoremap <leader>rn :LspRename<CR>
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+
+let g:lsp_log_file = expand('~/.vim-lsp.log')
+let g:lsp_log_verbose = 1
 
 " ----------------------------------------------------------------- "
 " Plugin: yankring
@@ -340,11 +353,6 @@ let g:yankring_replace_n_nkey = '<m-n>'
 " ----------------------------------------------------------------- "
 "let g:slime_target = "tmux" "using tmux instead of GNU screen
 "let g:slime_paste_file = "$HOME/.slime_paste"
-
-" ----------------------------------------------------------------- "
-" Plugin: vim-lsp
-" ----------------------------------------------------------------- "
-nnoremap <leader>gt :vsplit \| :LspDefinition<CR>
 
 " ----------------------------------------------------------------- "
 " Python/ Django setup
@@ -367,3 +375,8 @@ map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 " MarkDown
 " ----------------------------------------------------------------- "
 autocmd FileType markdown set spell
+
+" ----------------------------------------------------------------- "
+" Copilot
+" ----------------------------------------------------------------- "
+let g:copilot_workspace_folders=["~/"]
