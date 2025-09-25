@@ -18,6 +18,12 @@ cd dotfiles
 ./setup.sh
 ```
 
+# To run only select tests
+
+```
+ansible-playbook ./local.yml --ask-become-pass --ask-vault-pass -t git -t ssh
+```
+
 # Testing
 
 This repo provides a Dockerfile to be used when testing with, run the command
