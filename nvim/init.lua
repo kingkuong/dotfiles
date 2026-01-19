@@ -197,13 +197,23 @@ require("lazy").setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
         integrations = {
           treesitter = true,
-          nvimtree = true,
           telescope = true,
           mason = true,
           cmp = true,
         },
       })
       vim.cmd.colorscheme("catppuccin")
+    end,
+  },
+
+  -- Icons for file types
+  {
+    "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup({
+        default = true,
+        strict = true,
+      })
     end,
   },
 
@@ -346,25 +356,35 @@ require("lazy").setup({
     end,
   },
 
-  -- nvim-tree: File explorer
+  -- oil.nvim: Edit filesystem like a buffer
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "stevearc/oil.nvim",
     config = function()
-      require("nvim-tree").setup({
-        sort = { sorter = "case_sensitive" },
-        view = { width = 45 },
-        renderer = {
-          group_empty = true,
-          indent_markers = { enable = true },
+      require("oil").setup({
+        default_file_explorer = true,
+        columns = { "icon" },
+        buf_options = { buflisted = false, bufhidden = "hide" },
+        win_options = { wrap = false, signcolumn = "no", cursorcolumn = false },
+        delete_to_trash = false,
+        skip_confirm_for_simple_edits = false,
+        prompt_save_on_select_new_entry = true,
+        cleanup_delay_ms = 2000,
+        git = {
+          add = function(path)
+            return false
+          end,
         },
-        filters = {
-          dotfiles = false,
-          custom = { ".git", "node_modules", ".cache", "__pycache__" },
+        view_options = {
+          show_hidden = false,
+          is_always_hidden = function(name, _)
+            return vim.tbl_contains({ ".git", "node_modules", ".cache", "__pycache__" }, name)
+          end,
         },
       })
-      keymap("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree" })
-      keymap("n", "<leader>nf", "<cmd>NvimTreeFindFile<CR>", { desc = "Find file in tree" })
+      keymap("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+      keymap("n", "<leader>-", function()
+        require("oil").toggle_float()
+      end, { desc = "Open oil (float)" })
     end,
   },
 
@@ -376,7 +396,22 @@ require("lazy").setup({
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
     config = function()
+      local telescope = require("telescope")
       local builtin = require("telescope.builtin")
+
+      -- Enable fzf-native for better fuzzy matching
+      telescope.load_extension("fzf")
+      telescope.setup({
+        extensions = {
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+          },
+        },
+      })
+
       keymap("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files" })
       keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
       keymap("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
