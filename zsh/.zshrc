@@ -120,9 +120,31 @@ export ANDROID_HOME=/Development/android-sdk/
 export PATH=${PATH}:/Development/android-sdk/platform-tools:/Development/android-sdk/tools
 # AWS
 export PATH=$PATH:~/.local/bin
-# GO
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
+# GO (require asdf)
+# unset goroot so it works with asdf by defaut
+export GOROOT=
+export PATH=$PATH:$(go env GOPATH)/bin
 # REACT NATIVE
 export REACT_EDITOR=subl
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# OLLAMA
+#export OLLAMA_MODELS="$HOME/.ollama/models"
+export EDITOR=vim
+
+# asdf version manager (standalone binary)
+export PATH="$HOME/asdf:$PATH"
+
+# Go 1.24.0 installed locally
+export PATH=$HOME/sdk/go/bin:$PATH
+
+export CDK_DISABLE_TELEMETRY=1
+
+export AWS_PROFILE=$(aws configure get profile || echo "default")
+export AWS_REGION=$(aws configure get region)
+export AWS_DEFAULT_REGION=$(aws configure get region)
+export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
