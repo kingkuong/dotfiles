@@ -200,6 +200,7 @@ require("lazy").setup({
           telescope = true,
           mason = true,
           cmp = true,
+          gitsigns = true,
         },
       })
       vim.cmd.colorscheme("catppuccin")
@@ -359,6 +360,7 @@ require("lazy").setup({
   -- oil.nvim: Edit filesystem like a buffer
   {
     "stevearc/oil.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("oil").setup({
         default_file_explorer = true,
@@ -375,7 +377,7 @@ require("lazy").setup({
           end,
         },
         view_options = {
-          show_hidden = false,
+          show_hidden = true,
           is_always_hidden = function(name, _)
             return vim.tbl_contains({ ".git", "node_modules", ".cache", "__pycache__" }, name)
           end,
@@ -414,6 +416,7 @@ require("lazy").setup({
 
       keymap("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy find files" })
       keymap("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+      keymap("n", "<leader>fw", builtin.grep_string, { desc = "Search word under cursor" })
       keymap("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
       vim.api.nvim_create_user_command("GF", builtin.find_files, {})
     end,
@@ -462,6 +465,96 @@ require("lazy").setup({
       keymap("n", "<leader>xd", function()
         require("trouble").toggle("document_diagnostics")
       end, { desc = "Document diagnostics" })
+    end,
+  },
+
+  -- Git: Signs in gutter + inline blame
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({
+        current_line_blame = false, -- toggle with <leader>gt
+        current_line_blame_opts = {
+          delay = 300,
+        },
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+          local opts = { buffer = bufnr }
+
+          -- Navigation
+          keymap("n", "]h", gs.next_hunk, vim.tbl_extend("force", opts, { desc = "Next hunk" }))
+          keymap("n", "[h", gs.prev_hunk, vim.tbl_extend("force", opts, { desc = "Prev hunk" }))
+
+          -- Actions
+          keymap("n", "<leader>gip", gs.preview_hunk, vim.tbl_extend("force", opts, { desc = "Preview hunk" }))
+          keymap("n", "<leader>gib", gs.blame_line, vim.tbl_extend("force", opts, { desc = "Blame line" }))
+          keymap("n", "<leader>git", gs.toggle_current_line_blame, vim.tbl_extend("force", opts, { desc = "Toggle inline blame" }))
+          keymap("n", "<leader>git", gs.diffthis, vim.tbl_extend("force", opts, { desc = "Diff this" }))
+          keymap("n", "<leader>giD", function() gs.diffthis("~") end, vim.tbl_extend("force", opts, { desc = "Diff against ~" }))
+        end,
+      })
+    end,
+  },
+
+  -- Git: Full git wrapper (blame, diff, status)
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "Gvdiffsplit", "Gdiffsplit", "Gread", "Gwrite", "GBrowse" },
+    keys = {
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Git status" },
+      { "<leader>gB", "<cmd>Git blame<cr>", desc = "Git blame (full file)" },
+      { "<leader>gl", "<cmd>Git log --oneline<cr>", desc = "Git log" },
+    },
+  },
+
+  -- Markdown: Render markdown inline in buffer
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    ft = { "markdown" },
+    config = function()
+      require("render-markdown").setup({
+        heading = { enabled = true },
+        code = { enabled = true },
+        dash = { enabled = true },
+        bullet = { enabled = true },
+        checkbox = { enabled = true },
+        table = { enabled = true },
+        link = { enabled = true },
+      })
+      -- conceallevel = 2 required for rendering; scoped to markdown only
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.opt_local.conceallevel = 2
+        end,
+      })
+    end,
+  },
+
+  -- Git: Copy remote URL (GitHub, GitLab, etc.)
+  {
+    "ruifm/gitlinker.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gitlinker").setup({
+        mappings = nil, -- disable default mappings, we'll set our own
+      })
+      -- Copy remote URL for current line
+      keymap("n", "<leader>gy", function()
+        require("gitlinker").get_buf_range_url("n")
+      end, { desc = "Copy remote URL" })
+      -- Copy remote URL for visual selection
+      keymap("v", "<leader>gy", function()
+        require("gitlinker").get_buf_range_url("v")
+      end, { desc = "Copy remote URL (selection)" })
+      -- Open in browser
+      keymap("n", "<leader>gY", function()
+        require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser })
+      end, { desc = "Open in browser" })
     end,
   },
 })
