@@ -96,7 +96,6 @@ export TERM="xterm-256color"
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
 
-eval $(thefuck --alias)
 eval $(pip completion --zsh)
 
 # #######################################
@@ -130,7 +129,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # OLLAMA
 #export OLLAMA_MODELS="$HOME/.ollama/models"
-export EDITOR=vim
+export EDITOR=nvim
 
 # asdf version manager (standalone binary)
 export PATH="$HOME/asdf:$PATH"

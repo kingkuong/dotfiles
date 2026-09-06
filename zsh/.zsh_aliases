@@ -11,7 +11,7 @@ alias gr="git reset"
 alias gd="git diff -w"
 alias gc="git commit"
 alias gpl="git pull origin HEAD"
-alias ginit="git init; git remote add origin git@github.com:cuongtranx/${PWD##*/}.git"
+alias ginit="git init; git remote add origin git@github.com:kingkuong/${PWD##*/}.git"
 
 function gcl() {
     repository=$1
