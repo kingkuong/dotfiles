@@ -147,3 +147,6 @@ export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# opencode
+export PATH=/home/kingkuong/.opencode/bin:$PATH
