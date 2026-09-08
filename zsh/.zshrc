@@ -96,7 +96,6 @@ export TERM="xterm-256color"
 # if you do a 'rm *', Zsh will give you a sanity check!
 setopt RM_STAR_WAIT
 
-eval $(thefuck --alias)
 eval $(pip completion --zsh)
 
 # #######################################
@@ -130,7 +129,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # OLLAMA
 #export OLLAMA_MODELS="$HOME/.ollama/models"
-export EDITOR=vim
+export EDITOR=nvim
 
 # asdf version manager (standalone binary)
 export PATH="$HOME/asdf:$PATH"
@@ -148,3 +147,6 @@ export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
 
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+
+# opencode
+export PATH=/home/kingkuong/.opencode/bin:$PATH
